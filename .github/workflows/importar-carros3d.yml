@@ -1,0 +1,161 @@
+name: Importar biblioteca 3D de carros
+
+on:
+  push:
+    paths:
+      - .github/workflows/importar-carros3d.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: importar-carros3d
+  cancel-in-progress: false
+
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - name: Checkout do destino
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Baixar snapshot público da origem
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --depth=1 --filter=blob:none \
+            https://github.com/pedrosoandre/carros.git /tmp/carros3d-origem
+          git -C /tmp/carros3d-origem rev-parse HEAD | tee /tmp/carros3d-upstream-sha
+          test -f /tmp/carros3d-origem/cars.json
+          test -f /tmp/carros3d-origem/CREDITS.md
+          test -f /tmp/carros3d-origem/LICENSE
+
+      - name: Validar integridade do catálogo da origem
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, pathlib
+          root=pathlib.Path("/tmp/carros3d-origem")
+          catalog=json.loads((root/"cars.json").read_text())
+          cars=catalog.get("cars", [])
+          declared=catalog.get("count")
+          assert len(cars)==declared==532, f"Catálogo inesperado: {declared} / {len(cars)}"
+          missing=[c["file"] for c in cars if not (root/"assets"/c["file"]).is_file()]
+          assert not missing, f"GLBs ausentes: {missing[:10]}"
+          large=[str(p) for p in root.rglob("*") if p.is_file() and ".git" not in p.parts and p.stat().st_size>95_000_000]
+          assert not large, f"Arquivos incompatíveis com o limite do GitHub: {large[:10]}"
+          print(f"Validados {len(cars)} GLBs; tamanho declarado {catalog.get('totalBytes')}")
+          PY
+
+      - name: Importar metadados, código, documentação e créditos
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC=/tmp/carros3d-origem
+          rsync -a \
+            --exclude=.git/ \
+            --exclude=.github/workflows/ \
+            --exclude=assets/ \
+            --exclude=scenery/ \
+            --exclude=README.md \
+            --exclude=.env \
+            "$SRC/" ./
+          cp "$SRC/README.md" README_ORIGEM.md
+          cp /tmp/carros3d-upstream-sha UPSTREAM_COMMIT.txt
+          cat > README.md <<'EOF'
+          # AssetsCarros3D — biblioteca ArtiSys
+
+          Espelho de arquivos 3D de https://github.com/pedrosoandre/carros.
+          Este repositório contém o catálogo, seus arquivos GLB e os créditos
+          obrigatórios dos autores em CREDITS.md.
+
+          O commit exato da origem importada está em UPSTREAM_COMMIT.txt.
+          Leia README_ORIGEM.md para documentação e opções de uso.
+          A licença MIT cobre código e metadados; modelos 3D possuem licenças
+          individuais CC BY/CC BY-SA, conforme CREDITS.md e cars.json.
+          Os arquivos são mantidos localmente; nenhuma API paga é necessária.
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: importar catálogo, código e atribuições da origem"
+            git push origin HEAD:main
+          fi
+
+      - name: Importar modelos e cenários em lotes
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC=/tmp/carros3d-origem
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          batch=1
+          files=0
+          bytes=0
+          total=0
+          flush() {
+            if (( files == 0 )); then return; fi
+            git -c core.compression=1 commit -m "assets: copiar lote ${batch} (${files} arquivos)"
+            for attempt in 1 2 3; do
+              if git push origin HEAD:main; then break; fi
+              if (( attempt == 3 )); then exit 1; fi
+              sleep 8
+            done
+            total=$((total+files))
+            echo "Lote ${batch} enviado; ${total} arquivos acumulados"
+            batch=$((batch+1))
+            files=0
+            bytes=0
+          }
+          for dir in assets scenery; do
+            if [[ ! -d "$SRC/$dir" ]]; then continue; fi
+            while IFS= read -r -d '' input; do
+              rel="${input#"$SRC"/}"
+              mkdir -p "$(dirname "$rel")"
+              cp "$input" "$rel"
+              git add -f -- "$rel"
+              size=$(stat -c %s "$input")
+              files=$((files+1))
+              bytes=$((bytes+size))
+              if (( files >= 25 || bytes >= 125000000 )); then flush; fi
+            done < <(find "$SRC/$dir" -type f -print0 | sort -z)
+          done
+          flush
+          echo "Importados ${total} arquivos binários em lotes"
+
+      - name: Auditar destino e registrar checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, pathlib, hashlib
+          root=pathlib.Path(".")
+          cars=json.loads((root/"cars.json").read_text())["cars"]
+          expected={c["file"] for c in cars}
+          actual={p.name for p in (root/"assets").glob("*.glb")}
+          missing=expected-actual
+          assert not missing, f"Ausentes no destino: {sorted(missing)[:10]}"
+          report=[]
+          paths=sorted([p for folder in ("assets","scenery") for p in (root/folder).rglob("*") if p.is_file()] if (root/"scenery").exists() else [p for p in (root/"assets").rglob("*") if p.is_file()])
+          with (root/"SHA256SUMS.txt").open("w") as out:
+              for path in paths:
+                  digest=hashlib.sha256(path.read_bytes()).hexdigest()
+                  out.write(f"{digest}  {path.as_posix()}\n")
+          (root/"IMPORT_REPORT.json").write_text(json.dumps({
+              "models_declared":len(cars),
+              "models_present":len(expected),
+              "missing_models":len(missing),
+              "binary_files":len(paths),
+              "upstream_commit":(root/"UPSTREAM_COMMIT.txt").read_text().strip()
+          },indent=2)+"\n")
+          print(f"Verificados {len(expected)} modelos e {len(paths)} arquivos binários.")
+          PY
+          git add SHA256SUMS.txt IMPORT_REPORT.json
+          git commit -m "chore: registrar checksums e auditoria do acervo"
+          git push origin HEAD:main
