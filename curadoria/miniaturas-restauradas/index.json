@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "generator": "GLB real / Three.js + Meshopt / render offline",
+  "variant": "MATERIAIS_RESTAURADOS_EXPERIMENTAL",
+  "note": "Imagens reais dos GLB sem aprovação visual; não usar para associar geração/versão automaticamente.",
+  "selected": 5,
+  "generated": 5,
+  "failed": 0,
+  "models": [
+    {
+      "rank": 2,
+      "brand": "Fiat",
+      "model": "Uno",
+      "asset_id": "fiat-uno",
+      "asset_file": "fiat-uno.glb",
+      "source_title": "fiat uno - Turbo ie 1995",
+      "source_url": "https://sketchfab.com/3d-models/f5e38b26c0af4ef2ab2f4c4b2e5aad5c",
+      "author": "subishi",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas-restauradas/fiat-uno-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 28254,
+            "width": 1.1950588555248332,
+            "height": 0.95768945442629,
+            "depth": 2.4302800644571123
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas-restauradas/fiat-uno-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 28254,
+            "width": 1.1950588555248332,
+            "height": 0.95768945442629,
+            "depth": 2.4302800644571123
+          }
+        }
+      ],
+      "variant": "MATERIAIS_RESTAURADOS_EXPERIMENTAL"
+    },
+    {
+      "rank": 3,
+      "brand": "Fiat",
+      "model": "Palio",
+      "asset_id": "fiat-palio",
+      "asset_file": "fiat-palio.glb",
+      "source_title": "Fiat Palio 1997",
+      "source_url": "https://sketchfab.com/3d-models/8a3e71d4b4234110b59b09ef663e9448",
+      "author": "Fall0X",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas-restauradas/fiat-palio-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 24324,
+            "width": 2.2906493765730827,
+            "height": 1.7984445047866204,
+            "depth": 4.520472052332987
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas-restauradas/fiat-palio-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 24324,
+            "width": 2.2906493765730827,
+            "height": 1.7984445047866204,
+            "depth": 4.520472052332987
+          }
+        }
+      ],
+      "variant": "MATERIAIS_RESTAURADOS_EXPERIMENTAL"
+    },
+    {
+      "rank": 5,
+      "brand": "Chevrolet",
+      "model": "Corsa",
+      "asset_id": "chevrolet-corsa",
+      "asset_file": "chevrolet-corsa.glb",
+      "source_title": "Chevrolet Corsa Sedan 2010 FidwixGamer",
+      "source_url": "https://sketchfab.com/3d-models/f1b5b562ca874643b98dc81645091ceb",
+      "author": "FidwixGamer",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas-restauradas/chevrolet-corsa-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 48645,
+            "width": 6.546608953766707,
+            "height": 5.306421548922142,
+            "depth": 15.319976806640625
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas-restauradas/chevrolet-corsa-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 48645,
+            "width": 6.546608953766707,
+            "height": 5.306421548922142,
+            "depth": 15.319976806640625
+          }
+        }
+      ],
+      "variant": "MATERIAIS_RESTAURADOS_EXPERIMENTAL"
+    },
+    {
+      "rank": 10,
+      "brand": "Ford",
+      "model": "Ka",
+      "asset_id": "ford-ka",
+      "asset_file": "ford-ka.glb",
+      "source_title": "Ford Ka MK2 2008-2016",
+      "source_url": "https://sketchfab.com/3d-models/d2b74e929d9745ea9d151f8e2b195b17",
+      "author": "Merc_TV",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas-restauradas/ford-ka-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 37891,
+            "width": 1.9091500043869019,
+            "height": 2.0754634329974864,
+            "depth": 3.6151980948030893
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas-restauradas/ford-ka-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 37891,
+            "width": 1.9091500043869019,
+            "height": 2.0754634329974864,
+            "depth": 3.6151980948030893
+          }
+        }
+      ],
+      "variant": "MATERIAIS_RESTAURADOS_EXPERIMENTAL"
+    },
+    {
+      "rank": 12,
+      "brand": "Volkswagen",
+      "model": "Fox",
+      "asset_id": "vw-fox",
+      "asset_file": "vw-fox.glb",
+      "source_title": "Volkswagen Fox 3-Door 2003-2021",
+      "source_url": "https://sketchfab.com/3d-models/23298d52315f4275b3b58231c41e660f",
+      "author": "Merc_TV",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas-restauradas/vw-fox-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 46742,
+            "width": 1.902325987815857,
+            "height": 2.218987091133348,
+            "depth": 3.8163083651748186
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas-restauradas/vw-fox-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 46742,
+            "width": 1.902325987815857,
+            "height": 2.218987091133348,
+            "depth": 3.8163083651748186
+          }
+        }
+      ],
+      "variant": "MATERIAIS_RESTAURADOS_EXPERIMENTAL"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+name: Restauro GLB — pneus, pintura e materiais (prévia isolada)
+
+on:
+  push:
+    branches: [feat/restauro-materiais-modelos-3d-20261103]
+    paths:
+      - .github/workflows/restauro-visual-glb.yml
+      - scripts/curadoria/render_thumbnails.mjs
+      - scripts/curadoria/restaurar_glb.py
+      - curadoria/restauro-perfis.json
+      - tests/test_restauro.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: restauro-glb-draft
+  cancel-in-progress: false
+
+jobs:
+  restaurar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout do acervo e da curadoria
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - name: Regressão TDD dos GLBs sem alteração de malhas
+        run: python3 -m unittest discover -s tests -p 'test_restauro.py' -v
+      - name: Gerar 5 GLBs derivados reversíveis
+        run: |
+          python3 scripts/curadoria/restaurar_glb.py --ids ford-ka,vw-fox,chevrolet-corsa,fiat-palio,fiat-uno
+      - name: Verificar preservação dos arquivos originais e atribuições
+        run: |
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          audit=json.loads(Path("curadoria/restaurados/manifest.json").read_text())
+          assert len(audit["models"])==5
+          for x in audit["models"]:
+              path=Path("assets")/x["source"]
+              assert path.exists()
+              assert hashlib.sha256(path.read_bytes()).hexdigest()==x["sha256_original"]
+              assert x["mesh_count_before"]==x["mesh_count_after"]
+              assert x["review_status"]=="PENDENTE_REVISAO_VISUAL"
+              assert x["credit"]["author"] and x["credit"]["license"]
+              print(x["asset_id"], len(x["changes"]), "ajustes de material")
+          PY
+      - name: Preparar renderizador open source
+        run: |
+          npm ci --ignore-scripts
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Aplicar variantes somente ao checkout temporário
+        run: |
+          python3 - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          manifest=json.loads(Path("curadoria/restaurados/manifest.json").read_text())
+          for x in manifest["models"]:
+              shutil.copyfile(Path("curadoria/restaurados")/x["output"],Path("assets")/x["source"])
+              print("Render experimental:",x["asset_id"])
+          PY
+      - name: Renderizar 10 fotos 3D reais, sem aprovação comercial
+        env:
+          RENDER_IDS: fiat-uno,fiat-palio,chevrolet-corsa,ford-ka,vw-fox
+          RENDER_OUTPUT_DIR: restauradas
+          RENDER_VARIANT: MATERIAIS_RESTAURADOS_EXPERIMENTAL
+          THUMBNAIL_LIMIT: '5'
+        run: node scripts/curadoria/render_thumbnails.mjs
+      - name: Mosaico das restaurações
+        env:
+          RENDER_OUTPUT_DIR: restauradas
+        run: |
+          python3 -m pip install --user pillow
+          python3 scripts/curadoria/build_contact_sheet.py
+      - name: Validar PNGs e registrar ressalvas
+        run: |
+          python3 - <<'PY'
+          import json,struct
+          from pathlib import Path
+          folder=Path("curadoria/miniaturas-restauradas")
+          d=json.loads((folder/"index.json").read_text())
+          assert (d["selected"],d["generated"],d["failed"])==(5,5,0), d
+          assert all(m["variant"]=="MATERIAIS_RESTAURADOS_EXPERIMENTAL" and m["review_status"]=="PENDENTE_REVISAO_VISUAL" for m in d["models"])
+          images=list(folder.glob("*.png"))
+          assert len(images)==10,len(images)
+          for image in images:
+              with image.open("rb") as f: b=f.read(24)
+              assert b[:8]==b"\x89PNG\r\n\x1a\n" and struct.unpack(">II",b[16:24])==(700,480)
+          assert (folder/"MOSAICO_PRIMEIROS_MODELOS.jpg").exists()
+          print("5 GLBs restaurados, 10 imagens e mosaico prontos. Revisão humana pendente.")
+          PY
+      - name: Preservar apenas versões derivadas e seus renders na branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Não commitar alterações transitórias em assets/.
+          git add curadoria/restaurados/ curadoria/miniaturas-restauradas/
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: 5 GLBs restaurados e 10 miniaturas para revisão"
+            git push origin HEAD:feat/restauro-materiais-modelos-3d-20261103
+          fi
+      - name: Artefatos de revisão
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: restauro-modelos-3d-comparacao
+          path: |
+            curadoria/restaurados/manifest.json
+            curadoria/miniaturas-restauradas/
+          if-no-files-found: warn
+          retention-days: 14
