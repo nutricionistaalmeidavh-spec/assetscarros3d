@@ -61,6 +61,23 @@ def plan_wheels(bounds, cfg):
     return centers
 
 
+def world_to_local_parent(center, mode=None, root_node=None):
+    """Converte coordenadas medidas em world space para o grupo Collada local.
+
+    O wrapper Sketchfab dos modelos Ka/Fox usa rotação -90° no eixo X:
+    (x,y,z)_local => (x,z,-y)_world. A inversa evita rodas flutuantes.
+    """
+    if mode is None:
+        return list(center)
+    if mode!="sketchfab_x_minus_90":
+        raise ValueError("Rotação de pai não suportada")
+    quaternion=(root_node or {}).get("rotation",[])
+    expected=[-math.sqrt(.5),0,0,math.sqrt(.5)]
+    if len(quaternion)!=4 or any(abs(a-b)>.0001 for a,b in zip(quaternion,expected)):
+        raise ValueError("Raiz glTF não corresponde à rotação Sketchfab medida")
+    return [center[0],-center[2],center[1]]
+
+
 def source_group_reuse(doc, centers, cfg):
     names=cfg.get("reuse_groups",[])
     if not isinstance(names,list) or len(names)!=2 or len(set(names))!=2:
@@ -90,8 +107,9 @@ def source_group_reuse(doc, centers, cfg):
         # O aro original só tem a face externa em +x; para a roda esquerda
         # giramos todo o grupo 180° em y, preservando a montagem interna.
         side=-1 if i%2==0 else 1
+        local_center=world_to_local_parent(center,cfg.get("parent_space"),nodes[0])
         node={"name":f"ArtiSys_Wheel_{i+1:02d}_Reused",
-              "translation":center,"children":group_ids,
+              "translation":local_center,"children":group_ids,
               "extras":{"origin":"source_GLTF_original","curated":False,"part":"wheel"}}
         if side<0:
             node["rotation"]=[0,1,0,0]
