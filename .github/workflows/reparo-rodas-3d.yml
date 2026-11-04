@@ -1,0 +1,132 @@
+name: Reparo de rodas — Ka Fox Palio | QA GLB
+
+on:
+  push:
+    branches: [feat/reparo-geometria-rodas-ka-fox-palio-20261104]
+    paths:
+      - .github/workflows/reparo-rodas-3d.yml
+      - scripts/curadoria/reparar_rodas.py
+      - scripts/curadoria/render_thumbnails.mjs
+      - scripts/curadoria/build_contact_sheet.py
+      - tests/test_reparo_rodas.py
+      - curadoria/perfis-reparo-rodas.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qa-reparo-rodas-3d
+  cancel-in-progress: false
+
+jobs:
+  repair-and-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - name: Regressão do reparo com malhas reais e simuladas
+        run: |
+          python3 -m unittest discover -s tests -p 'test_reparo_rodas.py' -v
+          python3 -m unittest discover -s tests -p 'test_restauro.py' -v
+      - name: Gerar versões derivadas e preservar GLBs canônicos
+        run: python3 -m scripts.curadoria.reparar_rodas
+      - name: Auditar integridade e presença de quatro rodas por modelo
+        run: |
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          from scripts.curadoria.restaurar_glb import read_glb
+          from scripts.curadoria.reparar_rodas import read_bin_chunk
+          root=Path('curadoria/reparos-rodas')
+          data=json.loads((root/'manifest.json').read_text())
+          assert len(data['models'])==3
+          for entry in data['models']:
+            assert entry['wheels_created']==4
+            path=root/entry['output_file']
+            doc,tail=read_glb(path)
+            assert len(doc['meshes'])==entry['mesh_after']
+            assert hashlib.sha256(path.read_bytes()).hexdigest()==entry['sha256_restaurado']
+            assert entry['review_status']=='PENDENTE_REVISAO_VISUAL'
+            names=[x.get('name','') for x in doc['nodes']]
+            assert len([x for x in names if x.startswith('ArtiSys_WheelPosition_') or x.startswith('ArtiSys_Wheel_') and not x.startswith('ArtiSys_WheelPosition_')])==4
+            if entry['asset_id']!='fiat-palio':
+              original,oldbin=read_glb(Path('curadoria/restaurados')/entry['original_file'])
+              assert read_bin_chunk(tail)==read_bin_chunk(oldbin)
+            print('VALIDATED',entry['asset_id'],path.stat().st_size)
+          PY
+      - name: Preparar Three.js e Chromium de QA (open source)
+        run: |
+          npm ci --ignore-scripts
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Instalar variantes apenas no checkout transitório do QA
+        run: |
+          python3 - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          root=Path('curadoria/reparos-rodas')
+          manifest=json.loads((root/'manifest.json').read_text())
+          for m in manifest['models']:
+              shutil.copyfile(root/m['output_file'],Path('assets')/(m['asset_id']+'.glb'))
+          PY
+      - name: Renderizar frente e traseira dos três modelos reais
+        env:
+          RENDER_IDS: ford-ka,vw-fox,fiat-palio
+          RENDER_VARIANT: RODAS_REPARADAS_EXPERIMENTAL
+          RENDER_OUTPUT_DIR: rodas-reparadas
+          THUMBNAIL_LIMIT: '3'
+        run: node scripts/curadoria/render_thumbnails.mjs
+      - name: Gerar mosaico real para revisão visual
+        env:
+          RENDER_OUTPUT_DIR: rodas-reparadas
+        run: |
+          python3 -m pip install --user pillow
+          python3 scripts/curadoria/build_contact_sheet.py
+      - name: Validar PNGs sem homologar modelos automaticamente
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('curadoria/miniaturas-rodas-reparadas')
+          data=json.loads((root/'index.json').read_text())
+          assert (data['selected'],data['generated'],data['failed'])==(3,3,0), data
+          assert len(list(root.glob('*.png')))==6
+          assert (root/'MOSAICO_PRIMEIROS_MODELOS.jpg').is_file()
+          for x in data['models']:
+            assert x['review_status']=='PENDENTE_REVISAO_VISUAL'
+            assert all(y['stats']['triangles']>0 for y in x['views'])
+          print('QA_OK: seis screenshots reais; não homologados')
+          PY
+      - name: Preservar variantes novas e comparativos sem tocar nos originais
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add curadoria/reparos-rodas/ curadoria/miniaturas-rodas-reparadas/
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: versões experimentais com quatro rodas e seis renders verificados"
+            for attempt in 1 2 3; do
+              git fetch origin feat/reparo-geometria-rodas-ka-fox-palio-20261104
+              git rebase FETCH_HEAD
+              if git push origin HEAD:feat/reparo-geometria-rodas-ka-fox-palio-20261104; then exit 0; fi
+              sleep 5
+            done
+            exit 1
+          fi
+      - name: Evidências do reparo
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: QA-reparo-rodas-3d
+          path: |
+            curadoria/reparos-rodas/manifest.json
+            curadoria/miniaturas-rodas-reparadas/
+          if-no-files-found: warn
