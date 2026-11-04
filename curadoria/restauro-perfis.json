@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "note": "Versões experimentais de restauração visual, sem certificação de fidelidade. Os GLBs originais em assets/ não são modificados.",
+  "profiles": {
+    "ford-ka": {
+      "paint": "#627D8C",
+      "rules": [
+        {
+          "match": "^am5eunew1$",
+          "role": "paint"
+        },
+        {
+          "match": "^tire_01a$",
+          "color": "#171D22",
+          "roughness": 0.94,
+          "metallic": 0
+        },
+        {
+          "match": "^am5eunew1_glass$",
+          "color": "#344F5B",
+          "roughness": 0.13,
+          "metallic": 0.02
+        },
+        {
+          "match": "^am5eunew1_chrome$",
+          "color": "#BBC5CA",
+          "roughness": 0.25,
+          "metallic": 0.66
+        },
+        {
+          "match": "^am5eunew1_grey$",
+          "color": "#A7B2B6",
+          "roughness": 0.55,
+          "metallic": 0.16
+        },
+        {
+          "match": "^am5eunew1_mirror$",
+          "color": "#273C48",
+          "roughness": 0.23,
+          "metallic": 0.08
+        }
+      ]
+    },
+    "vw-fox": {
+      "paint": "#356E78",
+      "rules": [
+        {
+          "match": "^am5eunew1$",
+          "role": "paint"
+        },
+        {
+          "match": "^tire_01a$",
+          "color": "#171D22",
+          "roughness": 0.94,
+          "metallic": 0
+        },
+        {
+          "match": "^am5eunew1_glass$",
+          "color": "#334B55",
+          "roughness": 0.13,
+          "metallic": 0.02
+        },
+        {
+          "match": "^am5eunew1_chrome$",
+          "color": "#BECACD",
+          "roughness": 0.3,
+          "metallic": 0.6
+        },
+        {
+          "match": "^am5eunew1_grey2$",
+          "color": "#B1B8BA",
+          "roughness": 0.57,
+          "metallic": 0.1
+        },
+        {
+          "match": "^am5eunew1_mirror$",
+          "color": "#273C48",
+          "roughness": 0.23,
+          "metallic": 0.08
+        }
+      ]
+    },
+    "chevrolet-corsa": {
+      "paint": "#406F87",
+      "rules": [
+        {
+          "match": "^(Bootok|Chassis003|Doorrfok|Mala007|Part)\\w*Mtl$",
+          "role": "paint"
+        },
+        {
+          "match": "^Tire1Mtl$",
+          "color": "#171C21",
+          "roughness": 0.95,
+          "metallic": 0
+        },
+        {
+          "match": "^(Wheel002|Disc|Hub|Caliper|Cupper)\\w*Mtl$",
+          "color": "#9CA9AE",
+          "roughness": 0.5,
+          "metallic": 0.28
+        },
+        {
+          "match": "^Interior\\w*Mtl$",
+          "color": "#293238",
+          "roughness": 0.9,
+          "metallic": 0
+        },
+        {
+          "match": "^Meshpart\\w*Mtl$",
+          "color": "#737E82",
+          "roughness": 0.74,
+          "metallic": 0.05
+        }
+      ],
+      "fallback": {
+        "color": "#9AA5A7",
+        "roughness": 0.7,
+        "metallic": 0
+      }
+    },
+    "fiat-palio": {
+      "paint": "#667B93",
+      "rules": [
+        {
+          "match": ".*",
+          "role": "paint",
+          "when": "NEON_GREEN",
+          "metallic": 0.15,
+          "roughness": 0.53
+        }
+      ]
+    },
+    "fiat-uno": {
+      "paint": "#477E8C",
+      "mesh_groups": [
+        "capo",
+        "porta_malas",
+        "chassis.001",
+        "chassis.004",
+        "spoiler",
+        "caixa"
+      ],
+      "disable_vertex_color_for_mesh_groups": true
+    }
+  }
+}
