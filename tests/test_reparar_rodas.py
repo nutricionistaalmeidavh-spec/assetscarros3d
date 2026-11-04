@@ -83,5 +83,37 @@ class TestRepararRodas(unittest.TestCase):
             self.assertGreater(report["generated_triangle_count"],300)
 
 
+    def test_meshopt_virtual_fallback_buffer_is_preserved(self):
+        with tempfile.TemporaryDirectory() as d:
+            source=Path(d)/"source.glb";sample(source)
+            payload=source.read_bytes()
+            n=struct.unpack_from("<I",payload,12)[0]
+            doc=json.loads(payload[20:20+n])
+            doc["buffers"].append({"byteLength":123456,"extensions":{
+                "EXT_meshopt_compression":{"fallback":True}
+            }})
+            doc["extensionsUsed"]=["EXT_meshopt_compression"]
+            doc["bufferViews"].append({"buffer":1,"byteOffset":0,
+                "byteLength":2048,
+                "extensions":{"EXT_meshopt_compression":{
+                    "buffer":0,"byteOffset":0,"byteLength":16,
+                    "byteStride":4,"count":4,"mode":"ATTRIBUTES"
+                }}})
+            js=json.dumps(doc).encode()
+            js+=b" "*(-len(js)%4)
+            old_bin=payload[20+n:]
+            source.write_bytes(struct.pack("<4sII",b"glTF",2,20+len(js)+len(old_bin))+
+                struct.pack("<I4s",len(js),b"JSON")+js+old_bin)
+            output=Path(d)/"out.glb"
+            report=repair_wheels(source,output,"fiat-palio",hide_groups=())
+            validate_geometry(output)
+            from scripts.curadoria.reparar_rodas import _read_binary
+            result,_=_read_binary(output)
+            self.assertEqual(len(result["buffers"]),2)
+            self.assertEqual(result["buffers"][1],doc["buffers"][1])
+            self.assertEqual(result["bufferViews"][1],doc["bufferViews"][1])
+            self.assertEqual(report["wheel_count"],4)
+
+
 if __name__=="__main__":
     unittest.main()
