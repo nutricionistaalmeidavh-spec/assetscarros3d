@@ -1,0 +1,101 @@
+name: Consolidar rodas 3D e miniaturas já renderizadas
+
+on:
+  push:
+    branches: [feat/reparar-rodas-ka-fox-palio-20261104]
+    paths:
+      - .github/workflows/consolidar-rodas-3d.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: consolidar-rodas-3d
+  cancel-in-progress: false
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout atualizado do acervo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Testar e regenerar os 3 GLBs deterministicamente
+        run: |
+          python3 -m unittest discover -s tests -p 'test_reparar_rodas.py' -v
+          python3 -m scripts.curadoria.reparar_rodas
+      - name: Recuperar as seis imagens reais renderizadas no run aprovado
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41843171652
+          github-token: ${{ github.token }}
+          name: qa-rodas-ka-fox-palio
+          path: curadoria/
+      - name: Normalizar caminhos do artefato sem sobrescrever GLBs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          # download-artifact preserva o diretório relativo ao ancestral curadoria;
+          # em alguns formatos, inclui a pasta curadoria novamente.
+          root=Path("curadoria")
+          nested=root/"curadoria"
+          if nested.exists():
+              for name in ("miniaturas-geometria",):
+                  source=nested/name
+                  if source.exists():
+                      dest=root/name
+                      if dest.exists():shutil.rmtree(dest)
+                      shutil.move(source,dest)
+          assert (root/"miniaturas-geometria"/"index.json").exists()
+          PY
+      - name: Conferir SHA dos arquivos e seis imagens 3D verdadeiras
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,struct
+          from pathlib import Path
+          from scripts.curadoria.reparar_rodas import validate_geometry,inspect_wheel_nodes
+          base=Path("curadoria")
+          report=json.loads((base/"geometria/manifest.json").read_text())
+          imgs=json.loads((base/"miniaturas-geometria/index.json").read_text())
+          assert len(report["models"])==3
+          assert imgs["generated"]==3 and imgs["failed"]==0
+          for row in report["models"]:
+              file=Path(row["path"])
+              assert file.is_file() and validate_geometry(file)
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==row["repaired_sha256"]
+              assert len(inspect_wheel_nodes(file))==4
+              assert row["review_status"]=="PENDENTE_REVISAO_VISUAL"
+          images=list((base/"miniaturas-geometria").glob("*.png"))
+          assert len(images)==6
+          for image in images:
+              data=image.read_bytes()[:24]
+              assert data[:8]==b"\x89PNG\r\n\x1a\n"
+              assert struct.unpack(">II",data[16:24])==(700,480)
+          assert (base/"miniaturas-geometria/MOSAICO_PRIMEIROS_MODELOS.jpg").exists()
+          print("Consolidados 3 GLBs experimentais e 6 miniaturas reais.")
+          PY
+      - name: Commitar somente nesta branch, nunca main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add curadoria/geometria/ curadoria/miniaturas-geometria/
+          if git diff --cached --quiet; then
+            echo "Arquivos já estão na branch."
+            exit 0
+          fi
+          git commit -m "assets: 3 GLBs de rodas reconstruídas e 6 miniaturas para revisão"
+          for attempt in 1 2 3 4; do
+            git fetch origin feat/reparar-rodas-ka-fox-palio-20261104
+            git rebase FETCH_HEAD
+            if git push origin HEAD:feat/reparar-rodas-ka-fox-palio-20261104; then exit 0; fi
+            sleep 5
+          done
+          echo "Não foi possível concluir push com segurança" >&2
+          exit 1
