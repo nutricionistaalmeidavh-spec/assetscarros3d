@@ -139,6 +139,9 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Esses três arquivos foram substituídos somente no workspace para
+          # renderizar. Restaure os GLBs canônicos antes do commit/rebase.
+          git restore -- assets/ford-ka.glb assets/vw-fox.glb assets/fiat-palio.glb
           git add curadoria/rodas-reparadas curadoria/miniaturas-rodas curadoria/diagnostico-rodas-reparadas
           git diff --cached --quiet && exit 0
           git commit -m "assets: 3 GLBs com rodas corrigidas e miniaturas reais para revisão"
