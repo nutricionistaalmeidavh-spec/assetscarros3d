@@ -12,7 +12,11 @@ const priority=JSON.parse(await readFile(join(root,'curadoria/prioridades-frota-
 const manifest=JSON.parse(await readFile(join(root,'cars.json'),'utf8'));
 const count=Number(process.env.THUMBNAIL_LIMIT||'12');
 if(!Number.isInteger(count)||count<1||count>50)throw Error('THUMBNAIL_LIMIT deve estar entre 1 e 50');
-const selected=selectThumbnailCandidates(priority.models,{max:count});
+const ids=(process.env.RENDER_IDS||'').split(',').map(x=>x.trim()).filter(Boolean);
+const selected=ids.length
+ ? selectThumbnailCandidates(priority.models,{max:50}).filter(car=>ids.includes(car.asset_id))
+ : selectThumbnailCandidates(priority.models,{max:count});
+if(ids.length && selected.length!==ids.length)throw new Error('Seleção de renderizações incompleta');
 if(!selected.length)throw Error('Nenhum modelo apto à geração da miniatura');
 const catalogIds=new Map(manifest.cars.map(x=>[x.id,x]));
 for(const car of selected){
@@ -38,7 +42,8 @@ const server=createServer((req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const port=server.address().port;
-const outdir=join(root,'curadoria','miniaturas');
+const outputDir=process.env.RENDER_OUTPUT_DIR==='restauradas'?'miniaturas-restauradas':'miniaturas';
+const outdir=join(root,'curadoria',outputDir);
 mkdirSync(outdir,{recursive:true});
 const records=[];
 let browser=null;
@@ -61,13 +66,14 @@ try{
    author:catalogIds.get(car.asset_id)?.credit?.author,license:car.license,
    status:'FALHOU_NA_RENDERIZACAO',review_status:'PENDENTE_REVISAO_VISUAL',views:[]};
   try{
+   output.variant=process.env.RENDER_VARIANT||'ORIGINAL';
    for(let i=0;i<2;i++){
     const view=i===0?'frente':'traseira';
     const stats=await page.evaluate(args=>window.drawModel(args.file,args.view),{file:car.asset_file,view});
     const filename=files[i].split('/').at(-1);
     const full=join(outdir,filename);
     await page.locator('#viewer').screenshot({path:full,animations:'disabled',timeout:45000});
-    output.views.push({view,file:files[i],stats});
+    output.views.push({view,file:'curadoria/'+outputDir+'/'+filename,stats});
    }
    output.status='GERADO_PENDENTE_REVISAO';
    console.log('RENDER_OK',car.rank,car.brand,car.model);
@@ -85,7 +91,7 @@ try{
 const summary={selected:selected.length,generated:records.filter(x=>x.status==='GERADO_PENDENTE_REVISAO').length,
  failed:records.filter(x=>x.status!=='GERADO_PENDENTE_REVISAO').length};
 writeFileSync(join(outdir,'index.json'),JSON.stringify({
- schema_version:1,generator:'GLB real / Three.js + Meshopt / render offline',
+ schema_version:1,generator:'GLB real / Three.js + Meshopt / render offline', variant:process.env.RENDER_VARIANT||'ORIGINAL',
  note:'Imagens reais dos GLB sem aprovação visual; não usar para associar geração/versão automaticamente.',
  ...summary,models:records},null,2)+'\n');
 const rows=['# Miniaturas 3D para revisão visual','',
