@@ -111,6 +111,8 @@ jobs:
           from pathlib import Path
           report=json.loads(Path("curadoria/diagnostico-rodas-reparadas/geometry-report.json").read_text())
           render=json.loads(Path("curadoria/miniaturas-rodas/index.json").read_text())
+          geometry=json.loads(Path("curadoria/rodas-reparadas/manifest.json").read_text())
+          expected_by_id={m["asset_id"]:m["centers"] for m in geometry["models"]}
           assert (render["selected"],render["generated"],render["failed"])==(3,3,0),render
           assert len(report["models"])==3
           for x in report["models"]:
@@ -119,6 +121,17 @@ jobs:
                   raise AssertionError(f"{x['id']}: esperadas 4 rodas, encontradas {len(groups)}")
               points={tuple(round(v,2) for v in g["bounds"]["center"]) for g in groups}
               assert len(points)==4,(x["id"],points)
+              # Não basta haver 4 rodas: suas posições globais devem coincidir
+              # com os quatro centros medidos no GLB. Isso detecta a antiga
+              # rotação de -90 graus aplicada no pai do Ka e do Fox.
+              remaining=[g["bounds"]["center"] for g in groups]
+              import math
+              for expected in expected_by_id[x["id"]]:
+                  distance=[math.dist(expected,p) for p in remaining]
+                  closest=min(range(len(distance)),key=lambda i:distance[i])
+                  assert distance[closest]<.12,(x["id"],expected,remaining[closest],distance[closest])
+                  remaining.pop(closest)
+              assert len(remaining)==0
               for p in groups:
                   size=p["bounds"]["size"]
                   assert all(a>.15 for a in size),(x["id"],p)
