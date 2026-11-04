@@ -42,7 +42,7 @@ const server=createServer((req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const port=server.address().port;
-const outputDir=process.env.RENDER_OUTPUT_DIR==='restauradas'?'miniaturas-restauradas':'miniaturas';
+const outputDir=process.env.RENDER_OUTPUT_DIR==='rodas'?'miniaturas-rodas':process.env.RENDER_OUTPUT_DIR==='restauradas'?'miniaturas-restauradas':'miniaturas';
 const outdir=join(root,'curadoria',outputDir);
 mkdirSync(outdir,{recursive:true});
 const records=[];
