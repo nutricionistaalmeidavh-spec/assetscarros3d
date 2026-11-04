@@ -107,8 +107,13 @@ def _append_geometry(doc, tail, cfg):
     old_len,kind=struct.unpack_from("<I4s",tail,0)
     if kind!=b"BIN\0" or old_len!=len(tail)-8:
         raise ValueError("GLB com chunk BIN incompleto/múltiplo; intervenção manual")
-    if len(doc.get("buffers",[]))!=1 or doc["buffers"][0].get("uri"):
-        raise ValueError("Buffers externos ou múltiplos não suportados")
+    buffers=doc.get("buffers",[])
+    # GLBs otimizados por Meshopt podem declarar um segundo buffer virtual
+    # de fallback. Ele não corresponde a um segundo chunk BIN físico.
+    fallback_only=all(b.get("extensions",{}).get("EXT_meshopt_compression",{}).get("fallback") is True
+                      and not b.get("uri") for b in buffers[1:])
+    if not buffers or buffers[0].get("uri") or not fallback_only:
+        raise ValueError("Buffers externos ou múltiplos sem fallback Meshopt não suportados")
     original=tail[8:]
     packed=bytearray(original)
     radius=float(cfg["wheel_radius"])
