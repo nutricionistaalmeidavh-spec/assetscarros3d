@@ -1,0 +1,73 @@
+name: Diagnóstico real de rodas — Ka, Fox e Palio
+
+on:
+  push:
+    branches: [feat/restauro-rodas-ka-fox-palio-20261104]
+    paths:
+      - .github/workflows/diagnosticar-rodas.yml
+      - scripts/curadoria/diagnosticar_rodas.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: diagnose-3d-wheels
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout dos GLBs originais
+        uses: actions/checkout@v4
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - name: Preparar visualizador local
+        run: |
+          npm ci --ignore-scripts
+          npm install --no-save --ignore-scripts --package-lock=false playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Inspecionar bounds e peças 3D reais
+        run: node scripts/curadoria/diagnosticar_rodas.mjs
+      - name: Validar medições dos três GLBs
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          f=Path('curadoria/diagnostico-rodas/geometry-report.json')
+          d=json.loads(f.read_text())
+          assert len(d['models'])==3
+          assert {m['id'] for m in d['models']}=={'ford-ka','vw-fox','fiat-palio'}
+          for m in d['models']:
+              assert all(v>0 for v in m['dimensions'])
+              for view in ('diagonal','lateral'):
+                  p=f.parent/(m['id']+'-'+view+'.png')
+                  assert p.is_file() and p.stat().st_size>10000,p
+          PY
+      - name: Preservar diagnósticos somente na branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add curadoria/diagnostico-rodas/
+          if ! git diff --cached --quiet; then
+            git commit -m "test: registrar bounds de rodas e imagens de inspeção"
+            for try in 1 2 3; do
+              git fetch origin feat/restauro-rodas-ka-fox-palio-20261104
+              git rebase FETCH_HEAD
+              if git push origin HEAD:feat/restauro-rodas-ka-fox-palio-20261104; then exit 0; fi
+              sleep 5
+            done
+            exit 1
+          fi
+      - name: Disponibilizar imagens e laudo
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostico-rodas-ka-fox-palio
+          path: curadoria/diagnostico-rodas/
+          if-no-files-found: warn

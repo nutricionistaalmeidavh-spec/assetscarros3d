@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "source": "curadoria/diagnostico-rodas/geometry-report.json",
+  "note": "Coordenadas extraídas de bounding boxes do GLTF real. Rodas novas são aproximadas, nunca peças OEM homologadas.",
+  "cars": {
+    "ford-ka": {
+      "bounds": {
+        "min": [
+          -0.9546,
+          -0.2981,
+          -1.4645
+        ],
+        "max": [
+          0.9546,
+          1.7774,
+          2.1506
+        ]
+      },
+      "width_axis": "x",
+      "up_axis": "y",
+      "length_axis": "z",
+      "axle_offsets": [
+        0.18,
+        0.78
+      ],
+      "wheel_radius": 0.298,
+      "side_inset": 0.13,
+      "ground_offset": 0.015,
+      "reuse_groups": [
+        "fmka_wheels",
+        "fmka_tires"
+      ],
+      "method": "reuse_original",
+      "parent_space": "sketchfab_x_minus_90"
+    },
+    "vw-fox": {
+      "bounds": {
+        "min": [
+          -0.9699,
+          -0.2914,
+          -1.5851
+        ],
+        "max": [
+          0.9324,
+          1.9276,
+          2.2312
+        ]
+      },
+      "width_axis": "x",
+      "up_axis": "y",
+      "length_axis": "z",
+      "axle_offsets": [
+        0.18,
+        0.78
+      ],
+      "wheel_radius": 0.2914,
+      "side_inset": 0.13,
+      "ground_offset": 0.015,
+      "reuse_groups": [
+        "fmfox_wheels",
+        "fmfox_tires"
+      ],
+      "method": "reuse_original",
+      "parent_space": "sketchfab_x_minus_90"
+    },
+    "fiat-palio": {
+      "bounds": {
+        "min": [
+          -1.0894,
+          -0.5892,
+          -2.1869
+        ],
+        "max": [
+          1.2013,
+          1.2093,
+          2.3336
+        ]
+      },
+      "width_axis": "x",
+      "up_axis": "y",
+      "length_axis": "z",
+      "axle_offsets": [
+        0.22,
+        0.78
+      ],
+      "wheel_radius": 0.325,
+      "side_inset": 0.155,
+      "method": "procedural_approximation"
+    }
+  }
+}

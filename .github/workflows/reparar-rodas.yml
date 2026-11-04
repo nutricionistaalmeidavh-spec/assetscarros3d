@@ -1,0 +1,179 @@
+name: Reparo de rodas GLB — Ka, Fox e Palio (branch isolada)
+
+on:
+  push:
+    branches: [feat/restauro-rodas-ka-fox-palio-20261104]
+    paths:
+      - .github/workflows/reparar-rodas.yml
+      - scripts/curadoria/reparar_rodas.py
+      - scripts/curadoria/diagnosticar_rodas.mjs
+      - scripts/curadoria/render_thumbnails.mjs
+      - scripts/curadoria/build_contact_sheet.py
+      - tests/test_reparar_rodas.py
+      - curadoria/reparo-rodas-config.json
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reparar-rodas-3d-branch
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout seletivo do acervo — somente três GLBs necessários
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            .github/
+            scripts/
+            tests/
+            curadoria/
+            package.json
+            package-lock.json
+            cars.json
+            assets/ford-ka.glb
+            assets/vw-fox.glb
+            assets/fiat-palio.glb
+      - name: Python TDD — regressões e proteção de GLB canônico
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Reposicionar rodas originais e reconstruir Palio em derivativos
+        run: python3 -m scripts.curadoria.reparar_rodas
+      - name: Validar dimensões, origem intacta, hashes e licenças
+        run: |
+          python3 - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          p=Path("curadoria/rodas-reparadas")
+          m=json.loads((p/"manifest.json").read_text())
+          assert len(m["models"])==3
+          methods={x["asset_id"]:x["method"] for x in m["models"]}
+          assert methods["ford-ka"]=="REUSED_SOURCE_WHEELS"
+          assert methods["vw-fox"]=="REUSED_SOURCE_WHEELS"
+          assert methods["fiat-palio"]=="PROCEDURAL_APPROXIMATION"
+          for x in m["models"]:
+              output=p/x["output"]
+              assert output.is_file() and output.stat().st_size>50000
+              assert hashlib.sha256(output.read_bytes()).hexdigest()==x["sha256_repaired"]
+              assert x["source_binary_prefix_preserved"]
+              assert x["wheel_assemblies"]==4
+              assert x["approved_for_officina"] is False
+              assert x["credit"]["author"] and x["credit"]["license"]
+              print("REPAIR_OK",x["asset_id"],x["method"],output.stat().st_size)
+          PY
+      - name: Instalar renderizador open source
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - name: Preparar Chromium e renderizador
+        run: |
+          npm ci --ignore-scripts
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Montar arquivos derivados somente no checkout temporário
+        run: |
+          python3 - <<'PY'
+          import json, shutil
+          from pathlib import Path
+          m=json.loads(Path("curadoria/rodas-reparadas/manifest.json").read_text())
+          for x in m["models"]:
+              shutil.copyfile(Path("curadoria/rodas-reparadas")/x["output"],Path("assets")/(x["asset_id"]+".glb"))
+          PY
+      - name: Verificar as quatro rodas reais no motor Three.js/Meshopt
+        env:
+          WHEEL_DIAG_OUTPUT: repaired
+        run: node scripts/curadoria/diagnosticar_rodas.mjs
+      - name: Renderizar seis vistas reais, com reparos incorporados
+        env:
+          RENDER_IDS: ford-ka,vw-fox,fiat-palio
+          RENDER_OUTPUT_DIR: rodas
+          RENDER_VARIANT: RODAS_EXPERIMENTAIS_PENDENTES_DE_REVISAO
+          THUMBNAIL_LIMIT: '3'
+        run: node scripts/curadoria/render_thumbnails.mjs
+      - name: Mosaico de inspeção real
+        env:
+          RENDER_OUTPUT_DIR: rodas
+        run: |
+          python3 -m pip install --user pillow
+          python3 scripts/curadoria/build_contact_sheet.py
+      - name: Bloquear geometria incompleta e renderizações falsas
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          report=json.loads(Path("curadoria/diagnostico-rodas-reparadas/geometry-report.json").read_text())
+          render=json.loads(Path("curadoria/miniaturas-rodas/index.json").read_text())
+          geometry=json.loads(Path("curadoria/rodas-reparadas/manifest.json").read_text())
+          expected_by_id={m["asset_id"]:m["centers"] for m in geometry["models"]}
+          assert (render["selected"],render["generated"],render["failed"])==(3,3,0),render
+          assert len(report["models"])==3
+          for x in report["models"]:
+              groups=[g for g in x["wheelGroups"] if g["name"].startswith("ArtiSys_Wheel_")]
+              if len(groups)!=4:
+                  raise AssertionError(f"{x['id']}: esperadas 4 rodas, encontradas {len(groups)}")
+              points={tuple(round(v,2) for v in g["bounds"]["center"]) for g in groups}
+              assert len(points)==4,(x["id"],points)
+              # Não basta haver 4 rodas: suas posições globais devem coincidir
+              # com os quatro centros medidos no GLB. Isso detecta a antiga
+              # rotação de -90 graus aplicada no pai do Ka e do Fox.
+              remaining=[g["bounds"]["center"] for g in groups]
+              import math
+              for expected in expected_by_id[x["id"]]:
+                  distance=[math.dist(expected,p) for p in remaining]
+                  closest=min(range(len(distance)),key=lambda i:distance[i])
+                  assert distance[closest]<.12,(x["id"],expected,remaining[closest],distance[closest])
+                  remaining.pop(closest)
+              assert len(remaining)==0
+              for p in groups:
+                  size=p["bounds"]["size"]
+                  assert all(a>.15 for a in size),(x["id"],p)
+              print("GEOMETRY_QA_OK",x["id"],len(groups))
+          for model in render["models"]:
+              assert model["status"]=="GERADO_PENDENTE_REVISAO"
+              assert model["review_status"]=="PENDENTE_REVISAO_VISUAL"
+              assert len(model["views"])==2
+              for v in model["views"]:
+                  png=Path(v["file"])
+                  assert png.is_file() and png.stat().st_size>5000
+              print("RENDER_QA_OK",model["asset_id"])
+          assert Path("curadoria/miniaturas-rodas/MOSAICO_PRIMEIROS_MODELOS.jpg").is_file()
+          PY
+      - name: Commitar somente arquivos experimentais da branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Esses três arquivos foram substituídos somente no workspace para
+          # renderizar. Restaure os GLBs canônicos antes do commit/rebase.
+          git restore -- assets/ford-ka.glb assets/vw-fox.glb assets/fiat-palio.glb
+          git add curadoria/rodas-reparadas curadoria/miniaturas-rodas curadoria/diagnostico-rodas-reparadas
+          git diff --cached --quiet && exit 0
+          git commit -m "assets: 3 GLBs com rodas corrigidas e miniaturas reais para revisão"
+          for attempt in 1 2 3; do
+            git fetch origin feat/restauro-rodas-ka-fox-palio-20261104
+            git rebase FETCH_HEAD
+            if git push origin HEAD:feat/restauro-rodas-ka-fox-palio-20261104; then exit 0; fi
+            sleep 6
+          done
+          echo "Falha ao salvar as imagens na branch" >&2
+          exit 1
+      - name: Evidências da reparação
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reparo-rodas-ka-fox-palio
+          path: |
+            curadoria/rodas-reparadas/manifest.json
+            curadoria/miniaturas-rodas/
+            curadoria/diagnostico-rodas-reparadas/
+          if-no-files-found: warn
+          retention-days: 14
