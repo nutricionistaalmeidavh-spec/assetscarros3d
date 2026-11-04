@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "models": [
+    {
+      "asset_id": "ford-ka",
+      "source": "ford-ka.glb",
+      "output": "ford-ka-restaurado.glb",
+      "sha256_original": "214ef1bf1c1884ebd0e1cfca6606a56f034f39cb3af61f035110c01c8aa8f698",
+      "sha256_restaurado": "c6858d095910854d5db9547865bcd3d486d7855e4807649a8a08f05da252969e",
+      "mesh_count_before": 56,
+      "mesh_count_after": 56,
+      "node_count": 73,
+      "changes": [
+        {
+          "type": "material",
+          "name": "am5eunew1",
+          "index": 1
+        },
+        {
+          "type": "material",
+          "name": "am5eunew1_chrome",
+          "index": 5
+        },
+        {
+          "type": "material",
+          "name": "am5eunew1_glass",
+          "index": 8
+        },
+        {
+          "type": "material",
+          "name": "am5eunew1_grey",
+          "index": 12
+        },
+        {
+          "type": "material",
+          "name": "am5eunew1_mirror",
+          "index": 27
+        },
+        {
+          "type": "material",
+          "name": "tire_01a",
+          "index": 28
+        }
+      ],
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "geometry_status": "ORIGINAL_PRESERVADA",
+      "license_status": "CREDITOS_ORIGINAIS_MANTIDOS",
+      "credit": {
+        "author": "Merc_TV",
+        "authorUrl": "https://sketchfab.com/szymonpasterczyk",
+        "license": "CC Attribution",
+        "sourceName": "Ford Ka MK2 2008-2016",
+        "sourceUrl": "https://sketchfab.com/3d-models/d2b74e929d9745ea9d151f8e2b195b17"
+      }
+    },
+    {
+      "asset_id": "vw-fox",
+      "source": "vw-fox.glb",
+      "output": "vw-fox-restaurado.glb",
+      "sha256_original": "c93164849e7c294a3790ff1bd663f1e549971ac30e3efdca104e90bcf300c3eb",
+      "sha256_restaurado": "5cb33c2a2ef90c68bd7d1aafb4d1caeafa0c831eae038314c07752963bce1baf",
+      "mesh_count_before": 49,
+      "mesh_count_after": 49,
+      "node_count": 66,
+      "changes": [
+        {
+          "type": "material",
+          "name": "am5eunew1",
+          "index": 1
+        },
+        {
+          "type": "material",
+          "name": "am5eunew1_chrome",
+          "index": 4
+        },
+        {
+          "type": "material",
+          "name": "am5eunew1_glass",
+          "index": 7
+        },
+        {
+          "type": "material",
+          "name": "am5eunew1_mirror",
+          "index": 19
+        },
+        {
+          "type": "material",
+          "name": "tire_01a",
+          "index": 20
+        },
+        {
+          "type": "material",
+          "name": "am5eunew1_grey2",
+          "index": 21
+        }
+      ],
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "geometry_status": "ORIGINAL_PRESERVADA",
+      "license_status": "CREDITOS_ORIGINAIS_MANTIDOS",
+      "credit": {
+        "author": "Merc_TV",
+        "authorUrl": "https://sketchfab.com/szymonpasterczyk",
+        "license": "CC Attribution",
+        "sourceName": "Volkswagen Fox 3-Door 2003-2021",
+        "sourceUrl": "https://sketchfab.com/3d-models/23298d52315f4275b3b58231c41e660f"
+      }
+    },
+    {
+      "asset_id": "chevrolet-corsa",
+      "source": "chevrolet-corsa.glb",
+      "output": "chevrolet-corsa-restaurado.glb",
+      "sha256_original": "cc4fafaf5160566b3e2c07250ee7ed499568fed4caebb09f303d088ce171679f",
+      "sha256_restaurado": "c8d0b662f338d6462ed99158bd363ab6d6104fbe6ce020b1fd5e3f25db59a71b",
+      "mesh_count_before": 35,
+      "mesh_count_after": 35,
+      "node_count": 37,
+      "changes": [
+        {
+          "type": "material",
+          "name": "Bootok1Mtl",
+          "index": 0
+        },
+        {
+          "type": "material",
+          "name": "Caliper1Mtl",
+          "index": 1
+        },
+        {
+          "type": "material",
+          "name": "Chassis0031Mtl",
+          "index": 2
+        },
+        {
+          "type": "material",
+          "name": "Cupper1Mtl",
+          "index": 3
+        },
+        {
+          "type": "material",
+          "name": "Disc1Mtl",
+          "index": 4
+        },
+        {
+          "type": "material",
+          "name": "Doorrfok0011Mtl",
+          "index": 5
+        },
+        {
+          "type": "material",
+          "name": "Doorrfok0021Mtl",
+          "index": 6
+        },
+        {
+          "type": "material",
+          "name": "Doorrfok0031Mtl",
+          "index": 7
+        },
+        {
+          "type": "material",
+          "name": "Doorrfok0041Mtl",
+          "index": 8
+        },
+        {
+          "type": "material",
+          "name": "Doorrfok0051Mtl",
+          "index": 9
+        },
+        {
+          "type": "material",
+          "name": "Doorrfok0061Mtl",
+          "index": 10
+        },
+        {
+          "type": "material",
+          "name": "Doorrfok1Mtl",
+          "index": 11
+        },
+        {
+          "type": "material",
+          "name": "Hub1Mtl",
+          "index": 12
+        },
+        {
+          "type": "material",
+          "name": "Interior0061Mtl",
+          "index": 13
+        },
+        {
+          "type": "material",
+          "name": "Interior1Mtl",
+          "index": 14
+        },
+        {
+          "type": "fallback",
+          "name": "Logo1Mtl",
+          "index": 15
+        },
+        {
+          "type": "material",
+          "name": "Mala0071Mtl",
+          "index": 16
+        },
+        {
+          "type": "material",
+          "name": "Meshpart10Mtl",
+          "index": 17
+        },
+        {
+          "type": "material",
+          "name": "Meshpart14Mtl",
+          "index": 18
+        },
+        {
+          "type": "material",
+          "name": "Meshpart1Mtl",
+          "index": 19
+        },
+        {
+          "type": "material",
+          "name": "Meshpart5Mtl",
+          "index": 20
+        },
+        {
+          "type": "material",
+          "name": "Meshpart7Mtl",
+          "index": 21
+        },
+        {
+          "type": "material",
+          "name": "Meshpart8Mtl",
+          "index": 22
+        },
+        {
+          "type": "material",
+          "name": "Meshpart9Mtl",
+          "index": 23
+        },
+        {
+          "type": "material",
+          "name": "Part1Mtl",
+          "index": 24
+        },
+        {
+          "type": "fallback",
+          "name": "ShifterKnob1Mtl",
+          "index": 25
+        },
+        {
+          "type": "fallback",
+          "name": "Springtop1Mtl",
+          "index": 26
+        },
+        {
+          "type": "fallback",
+          "name": "Tenth1Mtl",
+          "index": 27
+        },
+        {
+          "type": "material",
+          "name": "Tire1Mtl",
+          "index": 28
+        },
+        {
+          "type": "fallback",
+          "name": "Union1Mtl",
+          "index": 29
+        },
+        {
+          "type": "fallback",
+          "name": "Upperarm1Mtl",
+          "index": 30
+        },
+        {
+          "type": "fallback",
+          "name": "Upperarmb1Mtl",
+          "index": 31
+        },
+        {
+          "type": "material",
+          "name": "Wheel0021Mtl",
+          "index": 32
+        }
+      ],
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "geometry_status": "ORIGINAL_PRESERVADA",
+      "license_status": "CREDITOS_ORIGINAIS_MANTIDOS",
+      "credit": {
+        "author": "FidwixGamer",
+        "authorUrl": "https://sketchfab.com/fidwixgamer",
+        "license": "CC Attribution",
+        "sourceName": "Chevrolet Corsa Sedan 2010 FidwixGamer",
+        "sourceUrl": "https://sketchfab.com/3d-models/f1b5b562ca874643b98dc81645091ceb"
+      }
+    },
+    {
+      "asset_id": "fiat-palio",
+      "source": "fiat-palio.glb",
+      "output": "fiat-palio-restaurado.glb",
+      "sha256_original": "30532acbac6333eecb2adc7e043769435bfb3a266376938b3b7129a613efe0c0",
+      "sha256_restaurado": "b5c655e1ab897c70c18bacf9b7ba956781f75c05eb7a936e66fb3c186ae07756",
+      "mesh_count_before": 50,
+      "mesh_count_after": 50,
+      "node_count": 76,
+      "changes": [
+        {
+          "type": "material",
+          "name": "g10m1",
+          "index": 2
+        },
+        {
+          "type": "material",
+          "name": "g9m1",
+          "index": 6
+        },
+        {
+          "type": "material",
+          "name": "g8m1",
+          "index": 10
+        },
+        {
+          "type": "material",
+          "name": "g7m0",
+          "index": 13
+        },
+        {
+          "type": "material",
+          "name": "g6m1",
+          "index": 17
+        },
+        {
+          "type": "material",
+          "name": "g0m3",
+          "index": 24
+        },
+        {
+          "type": "material",
+          "name": "g11m0.001",
+          "index": 39
+        }
+      ],
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "geometry_status": "ORIGINAL_PRESERVADA",
+      "license_status": "CREDITOS_ORIGINAIS_MANTIDOS",
+      "credit": {
+        "author": "Fall0X",
+        "authorUrl": "https://sketchfab.com/Fall0X",
+        "license": "CC Attribution",
+        "sourceName": "Fiat Palio 1997",
+        "sourceUrl": "https://sketchfab.com/3d-models/8a3e71d4b4234110b59b09ef663e9448"
+      }
+    },
+    {
+      "asset_id": "fiat-uno",
+      "source": "fiat-uno.glb",
+      "output": "fiat-uno-restaurado.glb",
+      "sha256_original": "fdbcb7f46e0f8677e9fc29cf60cc4067ec0a94b726c1749e47e7c640fd6614a0",
+      "sha256_restaurado": "035c2779dc698ccc90b8db0ae63dda1a9e0648ddb799e17033b1367d656a8d1f",
+      "mesh_count_before": 50,
+      "mesh_count_after": 50,
+      "node_count": 103,
+      "changes": [
+        {
+          "type": "mesh_paint",
+          "mesh": 4,
+          "material": 1
+        },
+        {
+          "type": "mesh_paint",
+          "mesh": 8,
+          "material": 2
+        },
+        {
+          "type": "mesh_paint",
+          "mesh": 26,
+          "material": 3
+        },
+        {
+          "type": "mesh_paint",
+          "mesh": 30,
+          "material": 4
+        },
+        {
+          "type": "mesh_paint",
+          "mesh": 31,
+          "material": 5
+        },
+        {
+          "type": "mesh_paint",
+          "mesh": 36,
+          "material": 6
+        }
+      ],
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "geometry_status": "ORIGINAL_PRESERVADA",
+      "license_status": "CREDITOS_ORIGINAIS_MANTIDOS",
+      "credit": {
+        "author": "subishi",
+        "authorUrl": "https://sketchfab.com/subishi",
+        "license": "CC Attribution",
+        "sourceName": "fiat uno - Turbo ie 1995",
+        "sourceUrl": "https://sketchfab.com/3d-models/f5e38b26c0af4ef2ab2f4c4b2e5aad5c"
+      }
+    }
+  ],
+  "status": "EXPERIMENTAL_NAO_HOMOLOGADO",
+  "notes": "GLBs derivados com restauração de materiais; geometria preservada, sem aprovação visual."
+}
