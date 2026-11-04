@@ -25,7 +25,7 @@ const server=createServer((req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const port=server.address().port;
-const out=join(root,'curadoria','diagnostico-rodas');
+const out=join(root,'curadoria',process.env.WHEEL_DIAG_OUTPUT==='repaired'?'diagnostico-rodas-reparadas':'diagnostico-rodas');
 mkdirSync(out,{recursive:true});
 let browser;
 try{
