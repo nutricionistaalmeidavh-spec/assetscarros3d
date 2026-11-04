@@ -5,7 +5,7 @@ import os
 from PIL import Image,ImageDraw,ImageFont
 
 ROOT=Path(__file__).resolve().parents[2]
-FOLDER=ROOT/"curadoria"/("miniaturas-restauradas" if os.getenv("RENDER_OUTPUT_DIR")=="restauradas" else "miniaturas")
+FOLDER=ROOT/"curadoria"/("miniaturas-geometria" if os.getenv("RENDER_OUTPUT_DIR")=="geometria" else "miniaturas-restauradas" if os.getenv("RENDER_OUTPUT_DIR")=="restauradas" else "miniaturas")
 data=json.loads((FOLDER/"index.json").read_text(encoding="utf-8"))
 models=[model for model in data["models"] if model["status"]=="GERADO_PENDENTE_REVISAO"]
 if not models:
