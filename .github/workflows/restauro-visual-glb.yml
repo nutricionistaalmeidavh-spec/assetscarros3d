@@ -5,6 +5,7 @@ on:
     branches: [feat/restauro-materiais-modelos-3d-20261103]
     paths:
       - .github/workflows/restauro-visual-glb.yml
+      - scripts/curadoria/render_thumbnails.mjs
       - scripts/curadoria/restaurar_glb.py
       - curadoria/restauro-perfis.json
       - tests/test_restauro.py
