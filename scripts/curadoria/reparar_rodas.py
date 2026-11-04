@@ -194,8 +194,16 @@ def _read_binary(source):
     n, kind=struct.unpack_from("<I4s",tail,0)
     if kind!=b"BIN\0" or n+8!=len(tail):
         raise ValueError("GLB com chunks binários não suportados")
-    if len(doc.get("buffers", []))!=1:
-        raise ValueError("Modelo com buffers externos não suportado")
+    buffers=doc.get("buffers",[])
+    if not buffers or buffers[0].get("uri"):
+        raise ValueError("GLB físico em buffer externo não suportado")
+    # GLBs com EXT_meshopt_compression podem incluir buffer #1 virtual,
+    # com bytes de fallback que nunca estão fisicamente presentes no BIN.
+    for virtual in buffers[1:]:
+        if virtual.get("uri") or not virtual.get("extensions",{}).get("EXT_meshopt_compression",{}).get("fallback"):
+            raise ValueError("Buffer externo desconhecido ou não autorizado")
+    if buffers[0]["byteLength"]>n:
+        raise ValueError("BIN físico menor que o declarado")
     return doc,tail[8:]
 
 
@@ -218,10 +226,18 @@ def validate_geometry(path):
     if len(inspect_wheel_nodes(path)) != 4:
         raise ValueError("A geometria reparada deve ter quatro rodas")
     for view in doc.get("bufferViews", []):
-        if view.get("buffer",0)!=0:
-            raise ValueError("BufferView com origem externa")
-        if view.get("byteOffset",0)+view["byteLength"]>len(blob):
+        buffer_index=view.get("buffer",0)
+        if buffer_index<0 or buffer_index>=len(doc.get("buffers",[])):
+            raise ValueError("BufferView com origem inválida")
+        if buffer_index!=0 and not view.get("extensions",{}).get("EXT_meshopt_compression"):
+            raise ValueError("Buffer virtual sem a extensão Meshopt")
+        if view.get("byteOffset",0)+view["byteLength"]>doc["buffers"][buffer_index]["byteLength"]:
             raise ValueError("Atributo fora do buffer")
+        compressed=view.get("extensions",{}).get("EXT_meshopt_compression")
+        if compressed:
+            offset=compressed.get("byteOffset",0)
+            if offset+compressed.get("byteLength",0)>len(blob):
+                raise ValueError("Bloco Meshopt fora do BIN físico")
     for acc in doc.get("accessors", []):
         if acc.get("bufferView",0)>=len(doc.get("bufferViews",[])):
             raise ValueError("Accessor com bufferView inválido")
