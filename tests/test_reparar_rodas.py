@@ -68,6 +68,40 @@ class TestReparo(unittest.TestCase):
             self.assertFalse(meta["approved_for_officina"])
             self.assertTrue(meta["source_binary_prefix_preserved"])
 
+
+    def test_ka_reuses_original_rim_and_tire_meshes_at_four_positions(self):
+        with tempfile.TemporaryDirectory() as folder:
+            src=Path(folder)/"ka.glb"
+            sample(src)
+            doc,binchunk=read_glb(src)
+            doc["nodes"]=[
+                {"name":"Root","children":[1,3]},
+                {"name":"fmka_wheels","children":[2]},
+                {"name":"rim","mesh":0},
+                {"name":"fmka_tires","children":[4]},
+                {"name":"tire","mesh":1}
+            ]
+            doc["meshes"]=[{"primitives":[]},{"primitives":[]}]
+            from scripts.curadoria.restaurar_glb import write_glb
+            write_glb(src,doc,binchunk)
+            original=src.read_bytes()
+            output=Path(folder)/"ka-rodas.glb"
+            meta=repair_variant(src,output,{"min":[-.955,-.298,-1.465],"max":[.955,1.777,2.151]},
+                {"length_axis":"z","up_axis":"y","width_axis":"x","wheel_radius":.298,
+                 "axle_offsets":[.18,.78],"ground_offset":.015,
+                 "reuse_groups":["fmka_wheels","fmka_tires"]},"ford-ka")
+            changed,binary=read_glb(output)
+            self.assertEqual(len(changed["meshes"]),2)
+            self.assertEqual(len([n for n in changed["nodes"] if n.get("name","").startswith("ArtiSys_Wheel_")]),4)
+            self.assertEqual(len([n for n in changed["nodes"] if n.get("name")=="fmka_tires"]),4)
+            self.assertEqual(len([n for n in changed["nodes"] if n.get("name")=="fmka_wheels"]),4)
+            self.assertEqual(changed["nodes"][0]["children"].count(1),0)
+            self.assertEqual(changed["nodes"][0]["children"].count(3),0)
+            self.assertEqual(original,src.read_bytes())
+            self.assertEqual(binary,binchunk)
+            self.assertEqual(meta["status"],"REUSED_ORIGINAL_WHEELS_PENDING_VISUAL_REVIEW")
+            self.assertFalse(meta["approved_for_officina"])
+
     def test_unsafe_coordinates_or_axis_config_is_rejected(self):
         for bounds,axes in [
           ({"min":[-1,-2,0],"max":[1,2,1.6]},{"length_axis":"x","up_axis":"x","width_axis":"z","axle_offsets":[.25,.75],"wheel_radius":.3}),
