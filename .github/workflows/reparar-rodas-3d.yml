@@ -1,0 +1,138 @@
+name: Reparar rodas reais Ka Fox Palio — GLB e QA 3D
+
+on:
+  push:
+    branches: [feat/reparar-rodas-ka-fox-palio-20261104]
+    paths:
+      - .github/workflows/reparar-rodas-3d.yml
+      - scripts/curadoria/reparar_rodas.py
+      - scripts/curadoria/render_thumbnails.mjs
+      - scripts/curadoria/build_contact_sheet.py
+      - tests/test_reparar_rodas.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: reparar-rodas-3d
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout biblioteca com GLBs e variantes anteriores
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - name: TDD e regressão do reparo de rodas sem Blender
+        run: |
+          python3 -m unittest discover -s tests -p 'test_reparar_rodas.py' -v
+          python3 -m unittest discover -s tests -p 'test_restauro.py' -v
+      - name: Produzir 3 arquivos GLB derivados com quatro rodas cada
+        run: |
+          python3 -m scripts.curadoria.reparar_rodas
+      - name: Checar SHA dos originais e quatro rodas verificáveis em cada GLB
+        run: |
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          from scripts.curadoria.reparar_rodas import validate_geometry,inspect_wheel_nodes
+          report=json.loads(Path("curadoria/geometria/manifest.json").read_text())
+          assert len(report["models"])==3
+          assert {r["id"] for r in report["models"]}=={"ford-ka","vw-fox","fiat-palio"}
+          for item in report["models"]:
+              origin=Path("curadoria/restaurados")/(item["id"]+"-restaurado.glb")
+              repaired=Path(item["path"])
+              assert origin.exists() and repaired.exists()
+              assert hashlib.sha256(origin.read_bytes()).hexdigest()==item["original_sha256"]
+              assert hashlib.sha256(repaired.read_bytes()).hexdigest()==item["repaired_sha256"]
+              assert item["binary_original_preserved"]
+              assert item["geometry_status"]=="RODAS_PROCEDURAIS_EXPERIMENTAIS"
+              assert item["review_status"]=="PENDENTE_REVISAO_VISUAL"
+              assert len(inspect_wheel_nodes(repaired))==4
+              assert validate_geometry(repaired)
+              print(item["id"],"four wheels, radius",round(item["wheel_radius"],3),
+                    "triangles",item["generated_triangle_count"])
+          PY
+      - name: Instalar renderizador open source Three.js e Chromium
+        run: |
+          npm ci --ignore-scripts
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Substituir GLBs apenas no checkout temporário do QA
+        run: |
+          python3 - <<'PY'
+          import json,shutil
+          from pathlib import Path
+          result=json.loads(Path("curadoria/geometria/manifest.json").read_text())
+          for item in result["models"]:
+              shutil.copyfile(Path(item["path"]),Path("assets")/(item["id"]+".glb"))
+          PY
+      - name: Renderizar seis imagens reais das rodas recuperadas
+        env:
+          THUMBNAIL_LIMIT: '3'
+          RENDER_IDS: fiat-palio,ford-ka,vw-fox
+          RENDER_OUTPUT_DIR: geometria
+          RENDER_VARIANT: GEOMETRIA_REPARADA_EXPERIMENTAL
+        run: |
+          node scripts/curadoria/render_thumbnails.mjs
+      - name: Montar mosaico de comparação
+        env:
+          RENDER_OUTPUT_DIR: geometria
+        run: |
+          python3 -m pip install --user pillow
+          python3 scripts/curadoria/build_contact_sheet.py
+      - name: Validar as seis imagens e manter status pendente de homologação
+        run: |
+          python3 - <<'PY'
+          import json,struct
+          from pathlib import Path
+          folder=Path("curadoria/miniaturas-geometria")
+          report=json.loads((folder/"index.json").read_text())
+          assert (report["selected"],report["generated"],report["failed"])==(3,3,0),report
+          assert all(item["variant"]=="GEOMETRIA_REPARADA_EXPERIMENTAL" for item in report["models"])
+          assert all(item["review_status"]=="PENDENTE_REVISAO_VISUAL" for item in report["models"])
+          files=list(folder.glob("*.png"))
+          assert len(files)==6,len(files)
+          for image in files:
+              with image.open("rb") as f: header=f.read(24)
+              assert header.startswith(b"\x89PNG\r\n\x1a\n")
+              assert struct.unpack(">II",header[16:24])==(700,480)
+          assert (folder/"MOSAICO_PRIMEIROS_MODELOS.jpg").is_file()
+          print("QA: três GLBs, 12 rodas geradas, seis renderizações e um mosaico.")
+          PY
+      - name: Publicar variantes e previews somente na branch da feature
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add curadoria/geometria/ curadoria/miniaturas-geometria/
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: reparar rodas de Ka Fox Palio com renders de QA"
+            for attempt in 1 2 3 4; do
+              git fetch origin feat/reparar-rodas-ka-fox-palio-20261104
+              git rebase FETCH_HEAD
+              if git push origin HEAD:feat/reparar-rodas-ka-fox-palio-20261104; then exit 0; fi
+              sleep 5
+            done
+            exit 1
+          fi
+      - name: Artefatos para revisão visual
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qa-rodas-ka-fox-palio
+          path: |
+            curadoria/geometria/manifest.json
+            curadoria/miniaturas-geometria/
+          if-no-files-found: warn
+          retention-days: 14
