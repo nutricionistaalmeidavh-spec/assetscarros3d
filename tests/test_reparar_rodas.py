@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 from scripts.curadoria.restaurar_glb import read_glb
-from scripts.curadoria.reparar_rodas import repair_variant, plan_wheels
+from scripts.curadoria.reparar_rodas import repair_variant, plan_wheels, world_to_local_parent
 
 
 def sample(path):
@@ -68,6 +68,19 @@ class TestReparo(unittest.TestCase):
             self.assertFalse(meta["approved_for_officina"])
             self.assertTrue(meta["source_binary_prefix_preserved"])
 
+
+    def test_sketchfab_root_rotation_moves_wheels_into_wheel_arches(self):
+        # A raiz do Ka/Fox está girada -90 graus em X. As medições são
+        # feitas em world space, mas os novos nós pertencem à scene group
+        # no espaço local anterior à rotação.
+        import math
+        parent={"rotation":[-math.sqrt(.5),0,0,math.sqrt(.5)]}
+        location=world_to_local_parent([.8246,.31896,1.355278],"sketchfab_x_minus_90",parent)
+        self.assertAlmostEqual(location[0],.8246,places=5)
+        self.assertAlmostEqual(location[1],-1.355278,places=5)
+        self.assertAlmostEqual(location[2],.31896,places=5)
+        with self.assertRaises(ValueError):
+            world_to_local_parent([.8,.3,1.2],"sketchfab_x_minus_90",{"rotation":[0,0,0,1]})
 
     def test_ka_reuses_original_rim_and_tire_meshes_at_four_positions(self):
         with tempfile.TemporaryDirectory() as folder:
