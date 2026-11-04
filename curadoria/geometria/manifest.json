@@ -8,28 +8,28 @@
       "wheel_count": 4,
       "wheel_centers": {
         "FL": [
-          -0.9580169314609703,
-          -0.21022204294754904,
-          -1.328030264667841
+          -0.9855088533833909,
+          -0.2895334456086389,
+          -1.0568019415278618
         ],
         "FR": [
-          1.069931857853426,
-          -0.21022204294754904,
-          -1.328030264667841
+          1.0974237797758466,
+          -0.2895334456086389,
+          -1.0568019415278618
         ],
         "RL": [
-          -0.9580169314609703,
-          -0.21022204294754904,
-          1.4746624077786108
+          -0.9855088533833909,
+          -0.2895334456086389,
+          1.2034340846386313
         ],
         "RR": [
-          1.069931857853426,
-          -0.21022204294754904,
-          1.4746624077786108
+          1.0974237797758466,
+          -0.2895334456086389,
+          1.2034340846386313
         ]
       },
-      "wheel_radius": 0.38666556852912337,
-      "wheel_thickness": 0.3054657991380075,
+      "wheel_radius": 0.3057355658137255,
+      "wheel_thickness": 0.24153109699284317,
       "original_mesh_count": 50,
       "repaired_mesh_count": 51,
       "original_node_count": 76,
@@ -37,7 +37,7 @@
       "generated_triangle_count": 948,
       "hidden_original_groups": [],
       "original_sha256": "b5c655e1ab897c70c18bacf9b7ba956781f75c05eb7a936e66fb3c186ae07756",
-      "repaired_sha256": "360fe68ebc52eaa11de0a3fee636ffefe7af4bb39ca30afcc78e4b6d62ba8d16",
+      "repaired_sha256": "9a8845b4e1ffeb72dac8f60cc6161ce7db4b273fec3d1d09b2b6e5c607fb3b91",
       "binary_original_preserved": true,
       "geometry_status": "RODAS_PROCEDURAIS_EXPERIMENTAIS",
       "review_status": "PENDENTE_REVISAO_VISUAL",
@@ -68,28 +68,28 @@
       "wheel_count": 4,
       "wheel_centers": {
         "FL": [
-          -0.8407999998963187,
-          0.5477983925880003,
-          -0.7776612559872254
+          -0.8646133350439648,
+          0.47909933917412595,
+          -0.7053572940911637
         ],
         "FR": [
-          0.8408003575241874,
-          0.5477983925880003,
-          -0.7776612559872254
+          0.8646136926718334,
+          0.47909933917412595,
+          -0.7053572940911637
         ],
         "RL": [
-          -0.8407999998963187,
-          0.5477983925880003,
-          1.4637615627906901
+          -0.8646133350439648,
+          0.47909933917412595,
+          1.3914576008946284
         ],
         "RR": [
-          0.8408003575241874,
-          0.5477983925880003,
-          1.4637615627906901
+          0.8646136926718334,
+          0.47909933917412595,
+          1.3914576008946284
         ]
       },
-      "wheel_radius": 0.3349273579134467,
-      "wheel_thickness": 0.2645926127516229,
+      "wheel_radius": 0.26482628300133,
+      "wheel_thickness": 0.2092127635710507,
       "original_mesh_count": 56,
       "repaired_mesh_count": 57,
       "original_node_count": 73,
@@ -100,7 +100,7 @@
         "fmka_tires"
       ],
       "original_sha256": "c6858d095910854d5db9547865bcd3d486d7855e4807649a8a08f05da252969e",
-      "repaired_sha256": "5aad632c385bed719c31d58262d4e5bf4df17ddf92dd1feb914845f5e23d7148",
+      "repaired_sha256": "178327e9528b5a3f63f3ff501084048ce5119756f2ba117de45da4da81c3d913",
       "binary_original_preserved": true,
       "geometry_status": "RODAS_PROCEDURAIS_EXPERIMENTAIS",
       "review_status": "PENDENTE_REVISAO_VISUAL",
@@ -131,28 +131,28 @@
       "wheel_count": 4,
       "wheel_centers": {
         "FL": [
-          -0.8471837733387947,
-          0.588126836591419,
-          -0.8599676508707064
+          -0.8718812615664786,
+          0.5132872389325513,
+          -0.7836414835672101
         ],
         "FR": [
-          0.8097421620488167,
-          0.588126836591419,
-          -0.8599676508707064
+          0.8344396502765006,
+          0.5132872389325513,
+          -0.7836414835672101
         ],
         "RL": [
-          -0.8471837733387947,
-          0.588126836591419,
-          1.5061435355376815
+          -0.8718812615664786,
+          0.5132872389325513,
+          1.4298173682341848
         ],
         "RR": [
-          0.8097421620488167,
-          0.588126836591419,
-          1.5061435355376815
+          0.8344396502765006,
+          0.5132872389325513,
+          1.4298173682341848
         ]
       },
-      "wheel_radius": 0.3648642516248656,
-      "wheel_thickness": 0.2853488981723785,
+      "wheel_radius": 0.28849731523826583,
+      "wheel_thickness": 0.22791287903823002,
       "original_mesh_count": 49,
       "repaired_mesh_count": 50,
       "original_node_count": 66,
@@ -163,7 +163,7 @@
         "fmfox_tires"
       ],
       "original_sha256": "5cb33c2a2ef90c68bd7d1aafb4d1caeafa0c831eae038314c07752963bce1baf",
-      "repaired_sha256": "f36e0fbb1f14cfb40df1bd33d63d7a9f19311f29b576f2ec0b2ca43fd4b6f731",
+      "repaired_sha256": "1dc3de78888ff2bcb30036556beb6bb521724c1280f4c9df4dce63485e49eef9",
       "binary_original_preserved": true,
       "geometry_status": "RODAS_PROCEDURAIS_EXPERIMENTAIS",
       "review_status": "PENDENTE_REVISAO_VISUAL",
