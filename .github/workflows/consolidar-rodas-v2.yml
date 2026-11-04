@@ -1,0 +1,92 @@
+name: Consolidar rodas v2 — prévias finais e GLBs por SHA
+
+on:
+  push:
+    branches: [feat/reparar-rodas-ka-fox-palio-20261104]
+    paths:
+      - .github/workflows/consolidar-rodas-v2.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: consolidar-rodas-v2
+  cancel-in-progress: false
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout arquivos necessários à reconstrução
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          filter: blob:none
+          sparse-checkout: |
+            curadoria/restaurados
+            curadoria/geometria
+            scripts/curadoria
+            tests
+            cars.json
+            curadoria/miniaturas-geometria
+            .github/workflows
+      - name: Regressão geométrica e regeneração determinística
+        run: |
+          python3 -m unittest discover -s tests -p 'test_reparar_rodas.py' -v
+          python3 -m scripts.curadoria.reparar_rodas
+          cp curadoria/geometria/manifest.json /tmp/generated-roda-manifest.json
+      - name: Recuperar previews aprovados do run com seis imagens
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41844671045
+          github-token: ${{ github.token }}
+          name: qa-rodas-ka-fox-palio
+          path: curadoria/
+      - name: Conferir integridade, correspondência e revisão pendente
+        run: |
+          python3 - <<'PY'
+          import json,hashlib,struct
+          from pathlib import Path
+          from scripts.curadoria.reparar_rodas import validate_geometry,inspect_wheel_nodes
+          base=Path("curadoria")
+          generated=json.loads(Path("/tmp/generated-roda-manifest.json").read_text())
+          downloaded=json.loads((base/"geometria/manifest.json").read_text())
+          assert {x["id"]:x["repaired_sha256"] for x in generated["models"]}=={
+              x["id"]:x["repaired_sha256"] for x in downloaded["models"]}, "GLBs não correspondem às prévias"
+          imgs=json.loads((base/"miniaturas-geometria/index.json").read_text())
+          assert (imgs["selected"],imgs["generated"],imgs["failed"])==(3,3,0)
+          for car in generated["models"]:
+              file=Path(car["path"])
+              assert file.is_file() and validate_geometry(file)
+              assert hashlib.sha256(file.read_bytes()).hexdigest()==car["repaired_sha256"]
+              assert len(inspect_wheel_nodes(file))==4
+              assert car["review_status"]=="PENDENTE_REVISAO_VISUAL"
+              assert car["author"] and car["license"] and car["sourceUrl"]
+          images=list((base/"miniaturas-geometria").glob("*.png"))
+          assert len(images)==6
+          for file in images:
+              data=file.read_bytes()[:24]
+              assert data[:8]==b"\x89PNG\r\n\x1a\n"
+              assert struct.unpack(">II",data[16:24])==(700,480)
+          assert (base/"miniaturas-geometria/MOSAICO_PRIMEIROS_MODELOS.jpg").exists()
+          print("3 GLBs definitivos desta revisão, 12 rodas 3D, 6 PNGs, original preservado")
+          PY
+      - name: Commitar GLBs e miniaturas somente na branch, sem assets originais
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add curadoria/geometria/ curadoria/miniaturas-geometria/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "assets: versão ajustada das rodas de Ka Fox Palio e QA visual"
+          for attempt in 1 2 3; do
+            git fetch origin feat/reparar-rodas-ka-fox-palio-20261104
+            git rebase FETCH_HEAD
+            if git push origin HEAD:feat/reparar-rodas-ka-fox-palio-20261104; then exit 0; fi
+            sleep 5
+          done
+          exit 1

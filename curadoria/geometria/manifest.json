@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "status": "REVISAO_VISUAL_PENDENTE",
+  "note": "As rodas são geometria nova procedimental, não peças originais do fabricante.",
+  "models": [
+    {
+      "id": "fiat-palio",
+      "wheel_count": 4,
+      "wheel_centers": {
+        "FL": [
+          -0.9855088533833909,
+          -0.2895334456086389,
+          -1.0568019415278618
+        ],
+        "FR": [
+          1.0974237797758466,
+          -0.2895334456086389,
+          -1.0568019415278618
+        ],
+        "RL": [
+          -0.9855088533833909,
+          -0.2895334456086389,
+          1.2034340846386313
+        ],
+        "RR": [
+          1.0974237797758466,
+          -0.2895334456086389,
+          1.2034340846386313
+        ]
+      },
+      "wheel_radius": 0.3057355658137255,
+      "wheel_thickness": 0.24153109699284317,
+      "original_mesh_count": 50,
+      "repaired_mesh_count": 51,
+      "original_node_count": 76,
+      "repaired_node_count": 80,
+      "generated_triangle_count": 948,
+      "hidden_original_groups": [],
+      "original_sha256": "b5c655e1ab897c70c18bacf9b7ba956781f75c05eb7a936e66fb3c186ae07756",
+      "repaired_sha256": "9a8845b4e1ffeb72dac8f60cc6161ce7db4b273fec3d1d09b2b6e5c607fb3b91",
+      "binary_original_preserved": true,
+      "geometry_status": "RODAS_PROCEDURAIS_EXPERIMENTAIS",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "vehicle_bounds": {
+        "min": [
+          -1.0893672250903135,
+          -0.5891543001060899,
+          -2.1869199546111084
+        ],
+        "max": [
+          1.2012821514827692,
+          1.2092902046805305,
+          2.333552097721878
+        ],
+        "size": [
+          2.2906493765730827,
+          1.7984445047866204,
+          4.520472052332987
+        ]
+      },
+      "author": "Fall0X",
+      "license": "CC Attribution",
+      "sourceUrl": "https://sketchfab.com/3d-models/8a3e71d4b4234110b59b09ef663e9448",
+      "path": "curadoria/geometria/fiat-palio-rodas.glb"
+    },
+    {
+      "id": "ford-ka",
+      "wheel_count": 4,
+      "wheel_centers": {
+        "FL": [
+          -0.8646133350439648,
+          0.47909933917412595,
+          -0.7053572940911637
+        ],
+        "FR": [
+          0.8646136926718334,
+          0.47909933917412595,
+          -0.7053572940911637
+        ],
+        "RL": [
+          -0.8646133350439648,
+          0.47909933917412595,
+          1.3914576008946284
+        ],
+        "RR": [
+          0.8646136926718334,
+          0.47909933917412595,
+          1.3914576008946284
+        ]
+      },
+      "wheel_radius": 0.26482628300133,
+      "wheel_thickness": 0.2092127635710507,
+      "original_mesh_count": 56,
+      "repaired_mesh_count": 57,
+      "original_node_count": 73,
+      "repaired_node_count": 77,
+      "generated_triangle_count": 948,
+      "hidden_original_groups": [
+        "fmka_wheels",
+        "fmka_tires"
+      ],
+      "original_sha256": "c6858d095910854d5db9547865bcd3d486d7855e4807649a8a08f05da252969e",
+      "repaired_sha256": "178327e9528b5a3f63f3ff501084048ce5119756f2ba117de45da4da81c3d913",
+      "binary_original_preserved": true,
+      "geometry_status": "RODAS_PROCEDURAIS_EXPERIMENTAIS",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "vehicle_bounds": {
+        "min": [
+          -0.9545748233795166,
+          0.21956958183282255,
+          -1.4645488939998124
+        ],
+        "max": [
+          0.9545751810073853,
+          1.7773712465465281,
+          2.1506492008032767
+        ],
+        "size": [
+          1.9091500043869019,
+          1.5578016647137056,
+          3.6151980948030893
+        ]
+      },
+      "author": "Merc_TV",
+      "license": "CC Attribution",
+      "sourceUrl": "https://sketchfab.com/3d-models/d2b74e929d9745ea9d151f8e2b195b17",
+      "path": "curadoria/geometria/ford-ka-rodas.glb"
+    },
+    {
+      "id": "vw-fox",
+      "wheel_count": 4,
+      "wheel_centers": {
+        "FL": [
+          -0.8718812615664786,
+          0.5132872389325513,
+          -0.7836414835672101
+        ],
+        "FR": [
+          0.8344396502765006,
+          0.5132872389325513,
+          -0.7836414835672101
+        ],
+        "RL": [
+          -0.8718812615664786,
+          0.5132872389325513,
+          1.4298173682341848
+        ],
+        "RR": [
+          0.8344396502765006,
+          0.5132872389325513,
+          1.4298173682341848
+        ]
+      },
+      "wheel_radius": 0.28849731523826583,
+      "wheel_thickness": 0.22791287903823002,
+      "original_mesh_count": 49,
+      "repaired_mesh_count": 50,
+      "original_node_count": 66,
+      "repaired_node_count": 70,
+      "generated_triangle_count": 948,
+      "hidden_original_groups": [
+        "fmfox_wheels",
+        "fmfox_tires"
+      ],
+      "original_sha256": "5cb33c2a2ef90c68bd7d1aafb4d1caeafa0c831eae038314c07752963bce1baf",
+      "repaired_sha256": "1dc3de78888ff2bcb30036556beb6bb521724c1280f4c9df4dce63485e49eef9",
+      "binary_original_preserved": true,
+      "geometry_status": "RODAS_PROCEDURAIS_EXPERIMENTAIS",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "vehicle_bounds": {
+        "min": [
+          -0.9698837995529175,
+          0.23055986999905076,
+          -1.585066240253922
+        ],
+        "max": [
+          0.9324421882629395,
+          1.9276029008123792,
+          2.2312421249208967
+        ],
+        "size": [
+          1.902325987815857,
+          1.6970430308133284,
+          3.8163083651748186
+        ]
+      },
+      "author": "Merc_TV",
+      "license": "CC Attribution",
+      "sourceUrl": "https://sketchfab.com/3d-models/23298d52315f4275b3b58231c41e660f",
+      "path": "curadoria/geometria/vw-fox-rodas.glb"
+    }
+  ]
+}
