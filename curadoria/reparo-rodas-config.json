@@ -30,7 +30,8 @@
         "fmka_wheels",
         "fmka_tires"
       ],
-      "method": "reuse_original"
+      "method": "reuse_original",
+      "parent_space": "sketchfab_x_minus_90"
     },
     "vw-fox": {
       "bounds": {
@@ -59,7 +60,8 @@
         "fmfox_wheels",
         "fmfox_tires"
       ],
-      "method": "reuse_original"
+      "method": "reuse_original",
+      "parent_space": "sketchfab_x_minus_90"
     },
     "fiat-palio": {
       "bounds": {
