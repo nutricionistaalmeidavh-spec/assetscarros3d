@@ -168,12 +168,12 @@ def _geometry(radius, thickness):
     for side in (-1,1):
         x=side*(thickness*.52)
         # Aro de liga, visível dos dois lados.
-        _ring(rim,x,radius*.18,x,radius*.66)
+        _ring(rim,x,radius*.59,x,radius*.70)
         # Estrutura escura atrás dos raios.
         _ring(center,x-side*.003,radius*.10,x-side*.003,radius*.68)
         for i in range(7):
             a=2*math.pi*i/7
-            _disk_sector(rim,x+side*.009,radius*.16,radius*.58,a-.065,a+.065)
+            _disk_sector(rim,x+side*.009,radius*.16,radius*.59,a-.11,a+.11)
         for i in range(20):
             a=2*math.pi*i/20
             b=2*math.pi*(i+1)/20
@@ -257,7 +257,8 @@ def repair_wheels(source, target, asset_id, *, hide_groups=None):
     bounds=scene_bounds(doc,exclude=hidden)
     width,height,length=bounds["size"]
     lo,hi=bounds["min"],bounds["max"]
-    radius=min(height*.215,width*.195)
+    # Perfil visual conservador: roda próxima de 34% da altura do veículo.
+    radius=min(height*.17,width*.17)
     thickness=min(width*.15,radius*.79)
     if radius<.17 or radius>.52:
         raise ValueError("Rodas fora da faixa de proporção esperada")
@@ -266,8 +267,10 @@ def repair_wheels(source, target, asset_id, *, hide_groups=None):
     right=middle_x+(width*.5-thickness*.43)
     # Centro ligeiramente acima do piso. Distâncias entre eixos aproximadas.
     level=lo[1]+radius*.98
-    front=lo[2]+length*.19
-    rear=lo[2]+length*.81
+    # Palio usa um entre-eixos proporcionalmente menor que Ka e Fox.
+    margin=.25 if asset_id=='fiat-palio' else .21
+    front=lo[2]+length*margin
+    rear=lo[2]+length*(1-margin)
     if abs(rear-front)<radius*3.5:
         raise ValueError("Entre-eixos não plausível")
     positions=[
@@ -292,7 +295,7 @@ def repair_wheels(source, target, asset_id, *, hide_groups=None):
     material_offset=len(doc.setdefault("materials",[]))
     for name,color,roughness,metallic in [
         ("ARTISYS_TYRE_MATTE",[.044,.051,.063,1],.93,0),
-        ("ARTISYS_ALLOY_RIM",[.66,.72,.76,1],.32,.60),
+        ("ARTISYS_ALLOY_RIM",[.78,.82,.85,1],.42,.40),
         ("ARTISYS_BRAKE_DARK",[.105,.12,.145,1],.78,.11),
     ]:
         doc["materials"].append({
