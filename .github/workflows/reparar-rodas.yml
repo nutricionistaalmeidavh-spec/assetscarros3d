@@ -5,6 +5,12 @@ on:
     branches: [feat/restauro-rodas-ka-fox-palio-20261104]
     paths:
       - .github/workflows/reparar-rodas.yml
+      - scripts/curadoria/reparar_rodas.py
+      - scripts/curadoria/diagnosticar_rodas.mjs
+      - scripts/curadoria/render_thumbnails.mjs
+      - scripts/curadoria/build_contact_sheet.py
+      - tests/test_reparar_rodas.py
+      - curadoria/reparo-rodas-config.json
   workflow_dispatch:
 
 permissions:
@@ -19,10 +25,23 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
-      - name: Checkout do acervo original, créditos e restauros anteriores
+      - name: Checkout seletivo do acervo — somente três GLBs necessários
         uses: actions/checkout@v4
         with:
           persist-credentials: true
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            .github/
+            scripts/
+            tests/
+            curadoria/
+            package.json
+            package-lock.json
+            cars.json
+            assets/ford-ka.glb
+            assets/vw-fox.glb
+            assets/fiat-palio.glb
       - name: Python TDD — regressões e proteção de GLB canônico
         run: python3 -m unittest discover -s tests -p 'test_*.py' -v
       - name: Reposicionar rodas originais e reconstruir Palio em derivativos
