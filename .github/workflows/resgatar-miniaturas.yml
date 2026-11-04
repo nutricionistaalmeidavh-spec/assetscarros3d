@@ -1,0 +1,68 @@
+name: Resgatar miniaturas renderizadas (sem rerender)
+
+on:
+  push:
+    branches: [feat/curadoria-tecnica-532-modelos-20261103]
+    paths:
+      - .github/workflows/resgatar-miniaturas.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: resgate-miniaturas
+  cancel-in-progress: false
+
+jobs:
+  resgatar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout atualizado da branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Recuperar artefato já renderizado no GitHub Actions
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 41746797383
+          github-token: ${{ github.token }}
+          name: miniaturas-3d-primeiro-lote
+          path: curadoria/miniaturas
+      - name: Validar 24 imagens e 12 modelos já gerados
+        run: |
+          python3 - <<'PY'
+          import json,struct
+          from pathlib import Path
+          root=Path("curadoria/miniaturas")
+          data=json.loads((root/"index.json").read_text())
+          assert data["selected"]==12 and data["generated"]==12 and data["failed"]==0
+          assert len(data["models"])==12
+          assert all(m["review_status"]=="PENDENTE_REVISAO_VISUAL" for m in data["models"])
+          pngs=list(root.glob("*.png"))
+          assert len(pngs)==24, f"Esperado 24 PNGs, recebidos {len(pngs)}"
+          for image in pngs:
+              with image.open("rb") as stream: header=stream.read(24)
+              assert header[:8]==b"\x89PNG\r\n\x1a\n" and struct.unpack(">II",header[16:24])==(700,480)
+          assert (root/"GALERIA.md").is_file() and (root/"MOSAICO_PRIMEIROS_MODELOS.jpg").is_file()
+          print("Resgate validado: 12 modelos, 24 PNGs reais e mosaico.")
+          PY
+      - name: Commitar e rebasear atualizações concorrentes com segurança
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add curadoria/miniaturas
+          git diff --cached --quiet && { echo "Arquivos já estão no Git"; exit 0; }
+          git commit -m "assets: incorporar 24 miniaturas reais e mosaico (Top 12 frota)"
+          for attempt in 1 2 3 4; do
+            git fetch origin feat/curadoria-tecnica-532-modelos-20261103
+            git rebase FETCH_HEAD
+            if git push origin HEAD:feat/curadoria-tecnica-532-modelos-20261103; then exit 0; fi
+            sleep 5
+          done
+          echo "Não foi possível publicar as imagens sem conflito" >&2
+          exit 1

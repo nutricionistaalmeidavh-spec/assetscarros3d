@@ -1,0 +1,60 @@
+name: Curadoria técnica GLB (não publica catálogo)
+
+on:
+  push:
+    branches: [feat/curadoria-tecnica-532-modelos-20261103]
+    paths:
+      - .github/workflows/curadoria-tecnica.yml
+      - scripts/curadoria/**
+      - tests/test_curadoria.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: curadoria-modelos-3d
+  cancel-in-progress: false
+
+jobs:
+  auditar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout dos arquivos GLB no repositório ArtiSys
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Testar o auditor local
+        run: python3 -m unittest discover -s tests -p 'test_curadoria.py' -v
+      - name: Auditar todos os modelos e gerar hashes
+        run: python3 -m scripts.curadoria.audit_models --checksum
+      - name: Confirmar resultado não aprovado automaticamente
+        run: |
+          python3 - <<'PY'
+          import json
+          with open("curadoria/relatorios/auditoria.json") as file:
+              data = json.load(file)
+          assert data["total_expected"] == 532
+          assert data["summary"]["models"] == 532
+          assert all(not m["approved_for_officina"] for m in data["models"])
+          assert all(m["review_status"] == "PENDENTE_REVISAO_VISUAL" for m in data["models"])
+          print("Todos os 532 itens auditados sem publicação ou aprovação automática.")
+          PY
+      - name: Registrar relatório na branch de curadoria
+        if: success() && github.ref == 'refs/heads/feat/curadoria-tecnica-532-modelos-20261103'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add curadoria/relatorios/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: publicar resultados automáticos da curadoria técnica"
+            git push origin HEAD:feat/curadoria-tecnica-532-modelos-20261103
+          fi
+      - name: Anexar relatório para análise
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-modelos-3d
+          path: curadoria/relatorios/
+          if-no-files-found: warn
