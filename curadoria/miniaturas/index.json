@@ -1,0 +1,454 @@
+{
+  "schema_version": 1,
+  "generator": "GLB real / Three.js + Meshopt / render offline",
+  "note": "Imagens reais dos GLB sem aprovação visual; não usar para associar geração/versão automaticamente.",
+  "selected": 12,
+  "generated": 12,
+  "failed": 0,
+  "models": [
+    {
+      "rank": 2,
+      "brand": "Fiat",
+      "model": "Uno",
+      "asset_id": "fiat-uno",
+      "asset_file": "fiat-uno.glb",
+      "source_title": "fiat uno - Turbo ie 1995",
+      "source_url": "https://sketchfab.com/3d-models/f5e38b26c0af4ef2ab2f4c4b2e5aad5c",
+      "author": "subishi",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/fiat-uno-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 28254,
+            "width": 1.1950588555248332,
+            "height": 0.95768945442629,
+            "depth": 2.4302800644571123
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/fiat-uno-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 28254,
+            "width": 1.1950588555248332,
+            "height": 0.95768945442629,
+            "depth": 2.4302800644571123
+          }
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "brand": "Fiat",
+      "model": "Palio",
+      "asset_id": "fiat-palio",
+      "asset_file": "fiat-palio.glb",
+      "source_title": "Fiat Palio 1997",
+      "source_url": "https://sketchfab.com/3d-models/8a3e71d4b4234110b59b09ef663e9448",
+      "author": "Fall0X",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/fiat-palio-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 24324,
+            "width": 2.2906493765730827,
+            "height": 1.7984445047866204,
+            "depth": 4.520472052332987
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/fiat-palio-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 24324,
+            "width": 2.2906493765730827,
+            "height": 1.7984445047866204,
+            "depth": 4.520472052332987
+          }
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "brand": "Fiat",
+      "model": "Strada",
+      "asset_id": "fiat-strada",
+      "asset_file": "fiat-strada.glb",
+      "source_title": "Fiat Strada - #LowPolyCarChallenge",
+      "source_url": "https://sketchfab.com/3d-models/d18048a6f7f04dad84a704aea1c02c5b",
+      "author": "Philipp Busse",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/fiat-strada-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 8548,
+            "width": 19.105754562145957,
+            "height": 13.989624797369185,
+            "depth": 40.889107396019426
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/fiat-strada-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 8548,
+            "width": 19.105754562145957,
+            "height": 13.989624797369185,
+            "depth": 40.889107396019426
+          }
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "brand": "Chevrolet",
+      "model": "Corsa",
+      "asset_id": "chevrolet-corsa",
+      "asset_file": "chevrolet-corsa.glb",
+      "source_title": "Chevrolet Corsa Sedan 2010 FidwixGamer",
+      "source_url": "https://sketchfab.com/3d-models/f1b5b562ca874643b98dc81645091ceb",
+      "author": "FidwixGamer",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/chevrolet-corsa-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 48645,
+            "width": 6.546608953766707,
+            "height": 5.306421548922142,
+            "depth": 15.319976806640625
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/chevrolet-corsa-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 48645,
+            "width": 6.546608953766707,
+            "height": 5.306421548922142,
+            "depth": 15.319976806640625
+          }
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "brand": "Volkswagen",
+      "model": "Fusca",
+      "asset_id": "vw-fusca",
+      "asset_file": "vw-fusca.glb",
+      "source_title": "volkswagen beetle \"The Bug\"",
+      "source_url": "https://sketchfab.com/3d-models/ad6a2f85f9ef4da0a3ac3a022177b3fe",
+      "author": "DRIVER-FIRE",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/vw-fusca-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 309618,
+            "width": 4.039539376438128,
+            "height": 1.5009168193365956,
+            "depth": 1.538054882623996
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/vw-fusca-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 309618,
+            "width": 4.039539376438128,
+            "height": 1.5009168193365956,
+            "depth": 1.538054882623996
+          }
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "brand": "Ford",
+      "model": "Fiesta",
+      "asset_id": "ford-fiesta",
+      "asset_file": "ford-fiesta.glb",
+      "source_title": "Ford Fiesta Mk5",
+      "source_url": "https://sketchfab.com/3d-models/f3a9d5d1fc9142d297f8d3c4d9b91431",
+      "author": "🇷🇴シRuletăシ🇷🇴",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/ford-fiesta-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 17298,
+            "width": 2.185071774871365,
+            "height": 1.66300438994644,
+            "depth": 4.503064502822876
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/ford-fiesta-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 17298,
+            "width": 2.185071774871365,
+            "height": 1.66300438994644,
+            "depth": 4.503064502822876
+          }
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "brand": "Chevrolet",
+      "model": "Onix",
+      "asset_id": "chevrolet-onix",
+      "asset_file": "chevrolet-onix.glb",
+      "source_title": "chevrolet onix",
+      "source_url": "https://sketchfab.com/3d-models/bfd798c2695847b28ab681d42abc7056",
+      "author": "uzb_rx7",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/chevrolet-onix-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 149285,
+            "width": 2.175980788831238,
+            "height": 1.799577465790418,
+            "depth": 4.752815673104184
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/chevrolet-onix-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 149285,
+            "width": 2.175980788831238,
+            "height": 1.799577465790418,
+            "depth": 4.752815673104184
+          }
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "brand": "Chevrolet",
+      "model": "Celta",
+      "asset_id": "chevrolet-celta",
+      "asset_file": "chevrolet-celta.glb",
+      "source_title": "low poly celta",
+      "source_url": "https://sketchfab.com/3d-models/e6ed28ade18247b6957010933ce518e0",
+      "author": "RATODDY",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/chevrolet-celta-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 7484,
+            "width": 3.972255141163128,
+            "height": 3.7660959663812648,
+            "depth": 9.048649111583238
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/chevrolet-celta-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 7484,
+            "width": 3.972255141163128,
+            "height": 3.7660959663812648,
+            "depth": 9.048649111583238
+          }
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "brand": "Ford",
+      "model": "Ka",
+      "asset_id": "ford-ka",
+      "asset_file": "ford-ka.glb",
+      "source_title": "Ford Ka MK2 2008-2016",
+      "source_url": "https://sketchfab.com/3d-models/d2b74e929d9745ea9d151f8e2b195b17",
+      "author": "Merc_TV",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/ford-ka-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 37891,
+            "width": 1.9091500043869019,
+            "height": 2.0754634329974864,
+            "depth": 3.6151980948030893
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/ford-ka-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 37891,
+            "width": 1.9091500043869019,
+            "height": 2.0754634329974864,
+            "depth": 3.6151980948030893
+          }
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "brand": "Volkswagen",
+      "model": "Saveiro",
+      "asset_id": "vw-saveiro",
+      "asset_file": "vw-saveiro.glb",
+      "source_title": "Volkswagen Saveiro Cross",
+      "source_url": "https://sketchfab.com/3d-models/4e71630d18e34ef09ef1abf4371859f2",
+      "author": "bimboit34",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/vw-saveiro-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 52140,
+            "width": 90.63177031562563,
+            "height": 72.1451290147892,
+            "depth": 213.0086045265198
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/vw-saveiro-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 52140,
+            "width": 90.63177031562563,
+            "height": 72.1451290147892,
+            "depth": 213.0086045265198
+          }
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "brand": "Volkswagen",
+      "model": "Fox",
+      "asset_id": "vw-fox",
+      "asset_file": "vw-fox.glb",
+      "source_title": "Volkswagen Fox 3-Door 2003-2021",
+      "source_url": "https://sketchfab.com/3d-models/23298d52315f4275b3b58231c41e660f",
+      "author": "Merc_TV",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/vw-fox-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 46742,
+            "width": 1.902325987815857,
+            "height": 2.218987091133348,
+            "depth": 3.8163083651748186
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/vw-fox-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 46742,
+            "width": 1.902325987815857,
+            "height": 2.218987091133348,
+            "depth": 3.8163083651748186
+          }
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "brand": "Volkswagen",
+      "model": "Voyage",
+      "asset_id": "vw-voyage",
+      "asset_file": "vw-voyage.glb",
+      "source_title": "Voyage GL 1.8",
+      "source_url": "https://sketchfab.com/3d-models/d5527fb1aff24ba0bc785370ffb14fba",
+      "author": "lael.eugenio",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas/vw-voyage-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 102410,
+            "width": 1.8414954712175742,
+            "height": 1.3718775630656777,
+            "depth": 4.091003179550171
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas/vw-voyage-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 102410,
+            "width": 1.8414954712175742,
+            "height": 1.3718775630656777,
+            "depth": 4.091003179550171
+          }
+        }
+      ]
+    }
+  ]
+}
