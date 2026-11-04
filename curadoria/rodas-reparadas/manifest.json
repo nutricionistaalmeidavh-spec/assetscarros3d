@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "status": "EXPERIMENTAL_PENDENTE_REVISAO_VISUAL",
+  "note": "Ka/Fox reutilizam as malhas originais; Palio recebe 4 rodas aproximadas não OEM.",
+  "models": [
+    {
+      "asset_id": "ford-ka",
+      "source": "ford-ka-restaurado.glb",
+      "output": "ford-ka-rodas.glb",
+      "sha256_source": "c6858d095910854d5db9547865bcd3d486d7855e4807649a8a08f05da252969e",
+      "sha256_repaired": "85a661be8871261849a9144b8f51232fcad3dfdbce21b32924d5d85b26d54879",
+      "source_binary_prefix_preserved": true,
+      "source_meshes": 56,
+      "repaired_meshes": 56,
+      "source_nodes": 73,
+      "repaired_nodes": 98,
+      "centers": [
+        [
+          -0.8246,
+          0.31896,
+          -0.813782
+        ],
+        [
+          0.8246,
+          0.31896,
+          -0.813782
+        ],
+        [
+          -0.8246,
+          0.31896,
+          1.355278
+        ],
+        [
+          0.8246,
+          0.31896,
+          1.355278
+        ]
+      ],
+      "method": "REUSED_SOURCE_WHEELS",
+      "added_meshes": 0,
+      "wheel_assemblies": 4,
+      "source_groups": [
+        "fmka_wheels",
+        "fmka_tires"
+      ],
+      "status": "REUSED_ORIGINAL_WHEELS_PENDING_VISUAL_REVIEW",
+      "approved_for_officina": false,
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "credit": {
+        "author": "Merc_TV",
+        "authorUrl": "https://sketchfab.com/szymonpasterczyk",
+        "license": "CC Attribution",
+        "sourceName": "Ford Ka MK2 2008-2016",
+        "sourceUrl": "https://sketchfab.com/3d-models/d2b74e929d9745ea9d151f8e2b195b17"
+      }
+    },
+    {
+      "asset_id": "vw-fox",
+      "source": "vw-fox-restaurado.glb",
+      "output": "vw-fox-rodas.glb",
+      "sha256_source": "5cb33c2a2ef90c68bd7d1aafb4d1caeafa0c831eae038314c07752963bce1baf",
+      "sha256_repaired": "3f7465ffe7da3c8b9dd6350737abd3e9a95b4fa65843b6cdca387d3e12a9f744",
+      "source_binary_prefix_preserved": true,
+      "source_meshes": 49,
+      "repaired_meshes": 49,
+      "source_nodes": 66,
+      "repaired_nodes": 88,
+      "centers": [
+        [
+          -0.8399,
+          0.312228,
+          -0.898166
+        ],
+        [
+          0.8024,
+          0.312228,
+          -0.898166
+        ],
+        [
+          -0.8399,
+          0.312228,
+          1.391614
+        ],
+        [
+          0.8024,
+          0.312228,
+          1.391614
+        ]
+      ],
+      "method": "REUSED_SOURCE_WHEELS",
+      "added_meshes": 0,
+      "wheel_assemblies": 4,
+      "source_groups": [
+        "fmfox_wheels",
+        "fmfox_tires"
+      ],
+      "status": "REUSED_ORIGINAL_WHEELS_PENDING_VISUAL_REVIEW",
+      "approved_for_officina": false,
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "credit": {
+        "author": "Merc_TV",
+        "authorUrl": "https://sketchfab.com/szymonpasterczyk",
+        "license": "CC Attribution",
+        "sourceName": "Volkswagen Fox 3-Door 2003-2021",
+        "sourceUrl": "https://sketchfab.com/3d-models/23298d52315f4275b3b58231c41e660f"
+      }
+    },
+    {
+      "asset_id": "fiat-palio",
+      "source": "fiat-palio-restaurado.glb",
+      "output": "fiat-palio-rodas.glb",
+      "sha256_source": "b5c655e1ab897c70c18bacf9b7ba956781f75c05eb7a936e66fb3c186ae07756",
+      "sha256_repaired": "1fe9608e1b398d7ae8686cf56dee5dcfe05e47874b64f6461c5e92036aee99b8",
+      "source_binary_prefix_preserved": true,
+      "source_meshes": 50,
+      "repaired_meshes": 51,
+      "source_nodes": 76,
+      "repaired_nodes": 80,
+      "centers": [
+        [
+          -0.9344,
+          -0.2577,
+          -1.19239
+        ],
+        [
+          1.0463,
+          -0.2577,
+          -1.19239
+        ],
+        [
+          -0.9344,
+          -0.2577,
+          1.33909
+        ],
+        [
+          1.0463,
+          -0.2577,
+          1.33909
+        ]
+      ],
+      "method": "PROCEDURAL_APPROXIMATION",
+      "added_meshes": 1,
+      "wheel_assemblies": 4,
+      "appended_bytes": 23112,
+      "status": "PROCEDURAL_APPROXIMATION_PENDING_VISUAL_REVIEW",
+      "approved_for_officina": false,
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "credit": {
+        "author": "Fall0X",
+        "authorUrl": "https://sketchfab.com/Fall0X",
+        "license": "CC Attribution",
+        "sourceName": "Fiat Palio 1997",
+        "sourceUrl": "https://sketchfab.com/3d-models/8a3e71d4b4234110b59b09ef663e9448"
+      }
+    }
+  ]
+}

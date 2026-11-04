@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "generator": "GLB real / Three.js + Meshopt / render offline",
+  "variant": "RODAS_EXPERIMENTAIS_PENDENTES_DE_REVISAO",
+  "note": "Imagens reais dos GLB sem aprovação visual; não usar para associar geração/versão automaticamente.",
+  "selected": 3,
+  "generated": 3,
+  "failed": 0,
+  "models": [
+    {
+      "rank": 3,
+      "brand": "Fiat",
+      "model": "Palio",
+      "asset_id": "fiat-palio",
+      "asset_file": "fiat-palio.glb",
+      "source_title": "Fiat Palio 1997",
+      "source_url": "https://sketchfab.com/3d-models/8a3e71d4b4234110b59b09ef663e9448",
+      "author": "Fall0X",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas-rodas/fiat-palio-frente.png",
+          "stats": {
+            "nodes": 5,
+            "triangles": 27284,
+            "width": 2.2906493765730827,
+            "height": 1.7984445047866204,
+            "depth": 4.520472052332987
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas-rodas/fiat-palio-traseira.png",
+          "stats": {
+            "nodes": 5,
+            "triangles": 27284,
+            "width": 2.2906493765730827,
+            "height": 1.7984445047866204,
+            "depth": 4.520472052332987
+          }
+        }
+      ],
+      "variant": "RODAS_EXPERIMENTAIS_PENDENTES_DE_REVISAO"
+    },
+    {
+      "rank": 10,
+      "brand": "Ford",
+      "model": "Ka",
+      "asset_id": "ford-ka",
+      "asset_file": "ford-ka.glb",
+      "source_title": "Ford Ka MK2 2008-2016",
+      "source_url": "https://sketchfab.com/3d-models/d2b74e929d9745ea9d151f8e2b195b17",
+      "author": "Merc_TV",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas-rodas/ford-ka-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 44995,
+            "width": 1.9198206200582015,
+            "height": 2.889245939636967,
+            "depth": 3.6151980948030893
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas-rodas/ford-ka-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 44995,
+            "width": 1.9198206200582015,
+            "height": 2.889245939636967,
+            "depth": 3.6151980948030893
+          }
+        }
+      ],
+      "variant": "RODAS_EXPERIMENTAIS_PENDENTES_DE_REVISAO"
+    },
+    {
+      "rank": 12,
+      "brand": "Volkswagen",
+      "model": "Fox",
+      "asset_id": "vw-fox",
+      "asset_file": "vw-fox.glb",
+      "source_title": "Volkswagen Fox 3-Door 2003-2021",
+      "source_url": "https://sketchfab.com/3d-models/23298d52315f4275b3b58231c41e660f",
+      "author": "Merc_TV",
+      "license": "CC Attribution",
+      "status": "GERADO_PENDENTE_REVISAO",
+      "review_status": "PENDENTE_REVISAO_VISUAL",
+      "views": [
+        {
+          "view": "frente",
+          "file": "curadoria/miniaturas-rodas/vw-fox-frente.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 54392,
+            "width": 1.93646237815009,
+            "height": 3.1171535977728286,
+            "depth": 3.8163083651748186
+          }
+        },
+        {
+          "view": "traseira",
+          "file": "curadoria/miniaturas-rodas/vw-fox-traseira.png",
+          "stats": {
+            "nodes": 1,
+            "triangles": 54392,
+            "width": 1.93646237815009,
+            "height": 3.1171535977728286,
+            "depth": 3.8163083651748186
+          }
+        }
+      ],
+      "variant": "RODAS_EXPERIMENTAIS_PENDENTES_DE_REVISAO"
+    }
+  ]
+}

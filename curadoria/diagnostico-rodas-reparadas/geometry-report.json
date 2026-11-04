@@ -1,0 +1,3149 @@
+{
+  "schema_version": 1,
+  "types": "MEDICOES_REAIS_GLTF",
+  "models": [
+    {
+      "id": "ford-ka",
+      "dimensions": [
+        1.9198,
+        2.8892,
+        3.6152
+      ],
+      "box": {
+        "min": [
+          -0.9599,
+          -1.1119,
+          -1.4645
+        ],
+        "max": [
+          0.9599,
+          1.7774,
+          2.1506
+        ],
+        "center": [
+          0,
+          0.3327,
+          0.3431
+        ],
+        "size": [
+          1.9198,
+          2.8892,
+          3.6152
+        ]
+      },
+      "wheels": [
+        {
+          "name": "am5eunew1_grey-material_1",
+          "material": "am5eunew1_grey",
+          "bounds": {
+            "min": [
+              -0.9593,
+              -1.022,
+              -0.5272
+            ],
+            "max": [
+              -0.7598,
+              -0.6056,
+              -0.1107
+            ],
+            "center": [
+              -0.8596,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "triangles": 1830,
+          "parent": "fmka_wheels"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_2",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              -0.9573,
+              -0.7623,
+              -0.1574
+            ],
+            "max": [
+              -0.9195,
+              -0.7478,
+              -0.136
+            ],
+            "center": [
+              -0.9384,
+              -0.755,
+              -0.1467
+            ],
+            "size": [
+              0.0378,
+              0.0145,
+              0.0214
+            ]
+          },
+          "triangles": 46,
+          "parent": "fmka_wheels"
+        },
+        {
+          "name": "am5eunew1_chrome-material_1",
+          "material": "am5eunew1_chrome",
+          "bounds": {
+            "min": [
+              -0.92,
+              -0.8721,
+              -0.3764
+            ],
+            "max": [
+              -0.9006,
+              -0.7549,
+              -0.261
+            ],
+            "center": [
+              -0.9103,
+              -0.8135,
+              -0.3187
+            ],
+            "size": [
+              0.0194,
+              0.1172,
+              0.1153
+            ]
+          },
+          "triangles": 152,
+          "parent": "fmka_wheels"
+        },
+        {
+          "name": "am5eunew1_badges-material_2",
+          "material": "am5eunew1_badges",
+          "bounds": {
+            "min": [
+              -0.9428,
+              -0.8241,
+              -0.3454
+            ],
+            "max": [
+              -0.9427,
+              -0.8034,
+              -0.2926
+            ],
+            "center": [
+              -0.9427,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.0001,
+              0.0207,
+              0.0528
+            ]
+          },
+          "triangles": 18,
+          "parent": "fmka_wheels"
+        },
+        {
+          "name": "tire_01a-material",
+          "material": "tire_01a",
+          "bounds": {
+            "min": [
+              -0.9599,
+              -1.1119,
+              -0.6171
+            ],
+            "max": [
+              -0.7582,
+              -0.5157,
+              -0.0209
+            ],
+            "center": [
+              -0.8591,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.2017,
+              0.5962,
+              0.5962
+            ]
+          },
+          "triangles": 322,
+          "parent": "fmka_tires"
+        },
+        {
+          "name": "am5eunew1_grey-material_2",
+          "material": "am5eunew1_grey",
+          "bounds": {
+            "min": [
+              0.7598,
+              -1.022,
+              -0.5272
+            ],
+            "max": [
+              0.9593,
+              -0.6056,
+              -0.1107
+            ],
+            "center": [
+              0.8596,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "triangles": 1830,
+          "parent": "fmka_wheels_1"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_3",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              0.9195,
+              -0.8798,
+              -0.1574
+            ],
+            "max": [
+              0.9573,
+              -0.8653,
+              -0.136
+            ],
+            "center": [
+              0.9384,
+              -0.8726,
+              -0.1467
+            ],
+            "size": [
+              0.0378,
+              0.0145,
+              0.0214
+            ]
+          },
+          "triangles": 46,
+          "parent": "fmka_wheels_1"
+        },
+        {
+          "name": "am5eunew1_chrome-material_2",
+          "material": "am5eunew1_chrome",
+          "bounds": {
+            "min": [
+              0.9006,
+              -0.8727,
+              -0.3764
+            ],
+            "max": [
+              0.92,
+              -0.7555,
+              -0.261
+            ],
+            "center": [
+              0.9103,
+              -0.8141,
+              -0.3187
+            ],
+            "size": [
+              0.0194,
+              0.1172,
+              0.1153
+            ]
+          },
+          "triangles": 152,
+          "parent": "fmka_wheels_1"
+        },
+        {
+          "name": "am5eunew1_badges-material_3",
+          "material": "am5eunew1_badges",
+          "bounds": {
+            "min": [
+              0.9427,
+              -0.8241,
+              -0.3454
+            ],
+            "max": [
+              0.9428,
+              -0.8034,
+              -0.2926
+            ],
+            "center": [
+              0.9427,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.0001,
+              0.0207,
+              0.0528
+            ]
+          },
+          "triangles": 18,
+          "parent": "fmka_wheels_1"
+        },
+        {
+          "name": "tire_01a-material_1",
+          "material": "tire_01a",
+          "bounds": {
+            "min": [
+              0.7582,
+              -1.1119,
+              -0.6171
+            ],
+            "max": [
+              0.9599,
+              -0.5157,
+              -0.0209
+            ],
+            "center": [
+              0.8591,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.2017,
+              0.5962,
+              0.5962
+            ]
+          },
+          "triangles": 322,
+          "parent": "fmka_tires_1"
+        },
+        {
+          "name": "am5eunew1_grey-material_3",
+          "material": "am5eunew1_grey",
+          "bounds": {
+            "min": [
+              -0.9593,
+              1.1471,
+              -0.5272
+            ],
+            "max": [
+              -0.7598,
+              1.5635,
+              -0.1107
+            ],
+            "center": [
+              -0.8596,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "triangles": 1830,
+          "parent": "fmka_wheels_2"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_4",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              -0.9573,
+              1.4068,
+              -0.1574
+            ],
+            "max": [
+              -0.9195,
+              1.4213,
+              -0.136
+            ],
+            "center": [
+              -0.9384,
+              1.414,
+              -0.1467
+            ],
+            "size": [
+              0.0378,
+              0.0145,
+              0.0214
+            ]
+          },
+          "triangles": 46,
+          "parent": "fmka_wheels_2"
+        },
+        {
+          "name": "am5eunew1_chrome-material_3",
+          "material": "am5eunew1_chrome",
+          "bounds": {
+            "min": [
+              -0.92,
+              1.297,
+              -0.3764
+            ],
+            "max": [
+              -0.9006,
+              1.4142,
+              -0.261
+            ],
+            "center": [
+              -0.9103,
+              1.3556,
+              -0.3187
+            ],
+            "size": [
+              0.0194,
+              0.1172,
+              0.1153
+            ]
+          },
+          "triangles": 152,
+          "parent": "fmka_wheels_2"
+        },
+        {
+          "name": "am5eunew1_badges-material_4",
+          "material": "am5eunew1_badges",
+          "bounds": {
+            "min": [
+              -0.9428,
+              1.3449,
+              -0.3454
+            ],
+            "max": [
+              -0.9427,
+              1.3656,
+              -0.2926
+            ],
+            "center": [
+              -0.9427,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.0001,
+              0.0207,
+              0.0528
+            ]
+          },
+          "triangles": 18,
+          "parent": "fmka_wheels_2"
+        },
+        {
+          "name": "tire_01a-material_2",
+          "material": "tire_01a",
+          "bounds": {
+            "min": [
+              -0.9599,
+              1.0572,
+              -0.6171
+            ],
+            "max": [
+              -0.7582,
+              1.6534,
+              -0.0209
+            ],
+            "center": [
+              -0.8591,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.2017,
+              0.5962,
+              0.5962
+            ]
+          },
+          "triangles": 322,
+          "parent": "fmka_tires_2"
+        },
+        {
+          "name": "am5eunew1_grey-material_4",
+          "material": "am5eunew1_grey",
+          "bounds": {
+            "min": [
+              0.7598,
+              1.1471,
+              -0.5272
+            ],
+            "max": [
+              0.9593,
+              1.5635,
+              -0.1107
+            ],
+            "center": [
+              0.8596,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "triangles": 1830,
+          "parent": "fmka_wheels_3"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_5",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              0.9195,
+              1.2892,
+              -0.1574
+            ],
+            "max": [
+              0.9573,
+              1.3038,
+              -0.136
+            ],
+            "center": [
+              0.9384,
+              1.2965,
+              -0.1467
+            ],
+            "size": [
+              0.0378,
+              0.0145,
+              0.0214
+            ]
+          },
+          "triangles": 46,
+          "parent": "fmka_wheels_3"
+        },
+        {
+          "name": "am5eunew1_chrome-material_4",
+          "material": "am5eunew1_chrome",
+          "bounds": {
+            "min": [
+              0.9006,
+              1.2964,
+              -0.3764
+            ],
+            "max": [
+              0.92,
+              1.4136,
+              -0.261
+            ],
+            "center": [
+              0.9103,
+              1.355,
+              -0.3187
+            ],
+            "size": [
+              0.0194,
+              0.1172,
+              0.1153
+            ]
+          },
+          "triangles": 152,
+          "parent": "fmka_wheels_3"
+        },
+        {
+          "name": "am5eunew1_badges-material_5",
+          "material": "am5eunew1_badges",
+          "bounds": {
+            "min": [
+              0.9427,
+              1.3449,
+              -0.3454
+            ],
+            "max": [
+              0.9428,
+              1.3656,
+              -0.2926
+            ],
+            "center": [
+              0.9427,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.0001,
+              0.0207,
+              0.0528
+            ]
+          },
+          "triangles": 18,
+          "parent": "fmka_wheels_3"
+        },
+        {
+          "name": "tire_01a-material_3",
+          "material": "tire_01a",
+          "bounds": {
+            "min": [
+              0.7582,
+              1.0572,
+              -0.6171
+            ],
+            "max": [
+              0.9599,
+              1.6534,
+              -0.0209
+            ],
+            "center": [
+              0.8591,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.2017,
+              0.5962,
+              0.5962
+            ]
+          },
+          "triangles": 322,
+          "parent": "fmka_tires_3"
+        }
+      ],
+      "wheelGroups": [
+        {
+          "name": "ArtiSys_Wheel_01_Reused",
+          "bounds": {
+            "min": [
+              -0.9599,
+              -1.1119,
+              -0.6171
+            ],
+            "max": [
+              -0.7582,
+              -0.5157,
+              -0.0209
+            ],
+            "center": [
+              -0.8591,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.2017,
+              0.5962,
+              0.5962
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 2
+        },
+        {
+          "name": "fmka_wheels",
+          "bounds": {
+            "min": [
+              -0.9593,
+              -1.022,
+              -0.5272
+            ],
+            "max": [
+              -0.7598,
+              -0.6056,
+              -0.1107
+            ],
+            "center": [
+              -0.8596,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 4
+        },
+        {
+          "name": "ArtiSys_Wheel_02_Reused",
+          "bounds": {
+            "min": [
+              0.7582,
+              -1.1119,
+              -0.6171
+            ],
+            "max": [
+              0.9599,
+              -0.5157,
+              -0.0209
+            ],
+            "center": [
+              0.8591,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.2017,
+              0.5962,
+              0.5962
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 2
+        },
+        {
+          "name": "fmka_wheels_1",
+          "bounds": {
+            "min": [
+              0.7598,
+              -1.022,
+              -0.5272
+            ],
+            "max": [
+              0.9593,
+              -0.6056,
+              -0.1107
+            ],
+            "center": [
+              0.8596,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 4
+        },
+        {
+          "name": "ArtiSys_Wheel_03_Reused",
+          "bounds": {
+            "min": [
+              -0.9599,
+              1.0572,
+              -0.6171
+            ],
+            "max": [
+              -0.7582,
+              1.6534,
+              -0.0209
+            ],
+            "center": [
+              -0.8591,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.2017,
+              0.5962,
+              0.5962
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 2
+        },
+        {
+          "name": "fmka_wheels_2",
+          "bounds": {
+            "min": [
+              -0.9593,
+              1.1471,
+              -0.5272
+            ],
+            "max": [
+              -0.7598,
+              1.5635,
+              -0.1107
+            ],
+            "center": [
+              -0.8596,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 4
+        },
+        {
+          "name": "ArtiSys_Wheel_04_Reused",
+          "bounds": {
+            "min": [
+              0.7582,
+              1.0572,
+              -0.6171
+            ],
+            "max": [
+              0.9599,
+              1.6534,
+              -0.0209
+            ],
+            "center": [
+              0.8591,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.2017,
+              0.5962,
+              0.5962
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 2
+        },
+        {
+          "name": "fmka_wheels_3",
+          "bounds": {
+            "min": [
+              0.7598,
+              1.1471,
+              -0.5272
+            ],
+            "max": [
+              0.9593,
+              1.5635,
+              -0.1107
+            ],
+            "center": [
+              0.8596,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 4
+        }
+      ],
+      "largestMeshes": [
+        {
+          "name": "am5eunew1-material_5",
+          "material": "am5eunew1",
+          "bounds": {
+            "min": [
+              -0.8128,
+              0.2782,
+              -1.4197
+            ],
+            "max": [
+              0.8128,
+              1.5875,
+              1.7886
+            ],
+            "center": [
+              0,
+              0.9328,
+              0.1844
+            ],
+            "size": [
+              1.6255,
+              1.3094,
+              3.2083
+            ]
+          },
+          "triangles": 8396,
+          "parent": "fmka_body"
+        },
+        {
+          "name": "am5eunew1_underbody-material_4",
+          "material": "am5eunew1_underbody",
+          "bounds": {
+            "min": [
+              -0.802,
+              0.2336,
+              -1.4164
+            ],
+            "max": [
+              0.802,
+              1.5454,
+              2.0577
+            ],
+            "center": [
+              0,
+              0.8895,
+              0.3206
+            ],
+            "size": [
+              1.604,
+              1.3118,
+              3.474
+            ]
+          },
+          "triangles": 3256,
+          "parent": "fmka_body"
+        },
+        {
+          "name": "am5eunew1_raceparts_light-material_2",
+          "material": "am5eunew1_raceparts_light",
+          "bounds": {
+            "min": [
+              -0.4816,
+              0.3345,
+              1.9961
+            ],
+            "max": [
+              0.4816,
+              0.6671,
+              2.1506
+            ],
+            "center": [
+              0,
+              0.5008,
+              2.0734
+            ],
+            "size": [
+              0.9633,
+              0.3327,
+              0.1545
+            ]
+          },
+          "triangles": 2828,
+          "parent": "fmka_bumper_F"
+        },
+        {
+          "name": "am5eunew1_chrome-material",
+          "material": "am5eunew1_chrome",
+          "bounds": {
+            "min": [
+              -0.8227,
+              0.3024,
+              -1.4125
+            ],
+            "max": [
+              0.8227,
+              1.1352,
+              2.0577
+            ],
+            "center": [
+              0,
+              0.7188,
+              0.3226
+            ],
+            "size": [
+              1.6455,
+              0.8328,
+              3.4702
+            ]
+          },
+          "triangles": 2803,
+          "parent": "fmka_body"
+        },
+        {
+          "name": "am5eunew1-material_4",
+          "material": "am5eunew1",
+          "bounds": {
+            "min": [
+              -0.796,
+              0.2491,
+              1.5918
+            ],
+            "max": [
+              0.796,
+              0.826,
+              2.1496
+            ],
+            "center": [
+              0,
+              0.5376,
+              1.8707
+            ],
+            "size": [
+              1.5921,
+              0.5769,
+              0.5578
+            ]
+          },
+          "triangles": 2734,
+          "parent": "fmka_bumper_F"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_1",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              -0.6524,
+              0.2732,
+              -1.3866
+            ],
+            "max": [
+              0.6524,
+              1.5544,
+              1.4956
+            ],
+            "center": [
+              0,
+              0.9138,
+              0.0545
+            ],
+            "size": [
+              1.3047,
+              1.2811,
+              2.8822
+            ]
+          },
+          "triangles": 2456,
+          "parent": "fmka_body"
+        },
+        {
+          "name": "am5eunew1-material_3",
+          "material": "am5eunew1",
+          "bounds": {
+            "min": [
+              -0.8025,
+              0.3592,
+              -1.4645
+            ],
+            "max": [
+              0.8025,
+              0.9785,
+              -1.0002
+            ],
+            "center": [
+              0,
+              0.6689,
+              -1.2324
+            ],
+            "size": [
+              1.605,
+              0.6194,
+              0.4644
+            ]
+          },
+          "triangles": 2116,
+          "parent": "fmka_bumper_R"
+        },
+        {
+          "name": "am5eunew1_grey-material_1",
+          "material": "am5eunew1_grey",
+          "bounds": {
+            "min": [
+              -0.9593,
+              -1.022,
+              -0.5272
+            ],
+            "max": [
+              -0.7598,
+              -0.6056,
+              -0.1107
+            ],
+            "center": [
+              -0.8596,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "triangles": 1830,
+          "parent": "fmka_wheels"
+        },
+        {
+          "name": "am5eunew1_grey-material_2",
+          "material": "am5eunew1_grey",
+          "bounds": {
+            "min": [
+              0.7598,
+              -1.022,
+              -0.5272
+            ],
+            "max": [
+              0.9593,
+              -0.6056,
+              -0.1107
+            ],
+            "center": [
+              0.8596,
+              -0.8138,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "triangles": 1830,
+          "parent": "fmka_wheels_1"
+        },
+        {
+          "name": "am5eunew1_grey-material_3",
+          "material": "am5eunew1_grey",
+          "bounds": {
+            "min": [
+              -0.9593,
+              1.1471,
+              -0.5272
+            ],
+            "max": [
+              -0.7598,
+              1.5635,
+              -0.1107
+            ],
+            "center": [
+              -0.8596,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "triangles": 1830,
+          "parent": "fmka_wheels_2"
+        },
+        {
+          "name": "am5eunew1_grey-material_4",
+          "material": "am5eunew1_grey",
+          "bounds": {
+            "min": [
+              0.7598,
+              1.1471,
+              -0.5272
+            ],
+            "max": [
+              0.9593,
+              1.5635,
+              -0.1107
+            ],
+            "center": [
+              0.8596,
+              1.3553,
+              -0.319
+            ],
+            "size": [
+              0.1995,
+              0.4164,
+              0.4165
+            ]
+          },
+          "triangles": 1830,
+          "parent": "fmka_wheels_3"
+        },
+        {
+          "name": "am5eunew1_glass-material_7",
+          "material": "am5eunew1_glass",
+          "bounds": {
+            "min": [
+              -0.7993,
+              0.7045,
+              -1.3478
+            ],
+            "max": [
+              0.7993,
+              1.1708,
+              2.0597
+            ],
+            "center": [
+              0,
+              0.9377,
+              0.356
+            ],
+            "size": [
+              1.5987,
+              0.4663,
+              3.4075
+            ]
+          },
+          "triangles": 1672,
+          "parent": "fmka_body"
+        },
+        {
+          "name": "am5eunew1_raceparts_light-material_3",
+          "material": "am5eunew1_raceparts_light",
+          "bounds": {
+            "min": [
+              -0.8315,
+              0.9587,
+              -0.907
+            ],
+            "max": [
+              0.8315,
+              1.7774,
+              1.4685
+            ],
+            "center": [
+              0,
+              1.368,
+              0.2808
+            ],
+            "size": [
+              1.6629,
+              0.8187,
+              2.3755
+            ]
+          },
+          "triangles": 1492,
+          "parent": "fmka_body"
+        },
+        {
+          "name": "am5eunew1_rearlights_light-material",
+          "material": "am5eunew1_rearlights_light",
+          "bounds": {
+            "min": [
+              -0.7087,
+              0.9022,
+              -1.3462
+            ],
+            "max": [
+              0.7095,
+              1.17,
+              -0.8579
+            ],
+            "center": [
+              0.0004,
+              1.0361,
+              -1.1021
+            ],
+            "size": [
+              1.4182,
+              0.2678,
+              0.4882
+            ]
+          },
+          "triangles": 815,
+          "parent": "fmka_body"
+        },
+        {
+          "name": "am5eunew1_black-material",
+          "material": "am5eunew1_black",
+          "bounds": {
+            "min": [
+              -0.7001,
+              1.0714,
+              -1.3107
+            ],
+            "max": [
+              0.7001,
+              1.5075,
+              1.3616
+            ],
+            "center": [
+              0,
+              1.2894,
+              0.0254
+            ],
+            "size": [
+              1.4003,
+              0.4361,
+              2.6723
+            ]
+          },
+          "triangles": 790,
+          "parent": "fmka_body"
+        }
+      ],
+      "sceneRoot": "Sketchfab_Scene"
+    },
+    {
+      "id": "vw-fox",
+      "dimensions": [
+        1.9365,
+        3.1172,
+        3.8163
+      ],
+      "box": {
+        "min": [
+          -0.987,
+          -1.1896,
+          -1.5851
+        ],
+        "max": [
+          0.9495,
+          1.9276,
+          2.2312
+        ],
+        "center": [
+          -0.0187,
+          0.369,
+          0.3231
+        ],
+        "size": [
+          1.9365,
+          3.1172,
+          3.8163
+        ]
+      },
+      "wheels": [
+        {
+          "name": "am5eunew1_raceparts_light-material_5",
+          "material": "am5eunew1_raceparts_light",
+          "bounds": {
+            "min": [
+              -0.9756,
+              -1.0993,
+              -0.5133
+            ],
+            "max": [
+              -0.7649,
+              -0.6965,
+              -0.1104
+            ],
+            "center": [
+              -0.8703,
+              -0.8979,
+              -0.3119
+            ],
+            "size": [
+              0.2107,
+              0.4028,
+              0.4028
+            ]
+          },
+          "triangles": 733,
+          "parent": "fmfox_wheels"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_3",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              -0.9767,
+              -0.9474,
+              -0.3602
+            ],
+            "max": [
+              -0.9557,
+              -0.7206,
+              -0.263
+            ],
+            "center": [
+              -0.9662,
+              -0.834,
+              -0.3116
+            ],
+            "size": [
+              0.021,
+              0.2267,
+              0.0972
+            ]
+          },
+          "triangles": 121,
+          "parent": "fmfox_wheels"
+        },
+        {
+          "name": "am5eunew1_grey2-material",
+          "material": "am5eunew1_grey2",
+          "bounds": {
+            "min": [
+              -0.987,
+              -1.0993,
+              -0.5139
+            ],
+            "max": [
+              -0.9496,
+              -0.6965,
+              -0.1105
+            ],
+            "center": [
+              -0.9683,
+              -0.8979,
+              -0.3122
+            ],
+            "size": [
+              0.0374,
+              0.4028,
+              0.4034
+            ]
+          },
+          "triangles": 1372,
+          "parent": "fmfox_wheels"
+        },
+        {
+          "name": "tire_01a-material",
+          "material": "tire_01a",
+          "bounds": {
+            "min": [
+              -0.9752,
+              -1.1896,
+              -0.6036
+            ],
+            "max": [
+              -0.7735,
+              -0.6068,
+              -0.0208
+            ],
+            "center": [
+              -0.8744,
+              -0.8982,
+              -0.3122
+            ],
+            "size": [
+              0.2017,
+              0.5828,
+              0.5828
+            ]
+          },
+          "triangles": 324,
+          "parent": "fmfox_tires"
+        },
+        {
+          "name": "am5eunew1_raceparts_light-material_6",
+          "material": "am5eunew1_raceparts_light",
+          "bounds": {
+            "min": [
+              0.7274,
+              -1.0999,
+              -0.5133
+            ],
+            "max": [
+              0.9381,
+              -0.6971,
+              -0.1104
+            ],
+            "center": [
+              0.8328,
+              -0.8985,
+              -0.3119
+            ],
+            "size": [
+              0.2107,
+              0.4028,
+              0.4028
+            ]
+          },
+          "triangles": 733,
+          "parent": "fmfox_wheels_1"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_4",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              0.9182,
+              -1.0757,
+              -0.3602
+            ],
+            "max": [
+              0.9392,
+              -0.849,
+              -0.263
+            ],
+            "center": [
+              0.9287,
+              -0.9623,
+              -0.3116
+            ],
+            "size": [
+              0.021,
+              0.2267,
+              0.0972
+            ]
+          },
+          "triangles": 121,
+          "parent": "fmfox_wheels_1"
+        },
+        {
+          "name": "am5eunew1_grey2-material_1",
+          "material": "am5eunew1_grey2",
+          "bounds": {
+            "min": [
+              0.9121,
+              -1.0999,
+              -0.5139
+            ],
+            "max": [
+              0.9495,
+              -0.6971,
+              -0.1105
+            ],
+            "center": [
+              0.9308,
+              -0.8985,
+              -0.3122
+            ],
+            "size": [
+              0.0374,
+              0.4028,
+              0.4034
+            ]
+          },
+          "triangles": 1372,
+          "parent": "fmfox_wheels_1"
+        },
+        {
+          "name": "tire_01a-material_1",
+          "material": "tire_01a",
+          "bounds": {
+            "min": [
+              0.736,
+              -1.1896,
+              -0.6036
+            ],
+            "max": [
+              0.9377,
+              -0.6068,
+              -0.0208
+            ],
+            "center": [
+              0.8369,
+              -0.8982,
+              -0.3122
+            ],
+            "size": [
+              0.2017,
+              0.5828,
+              0.5828
+            ]
+          },
+          "triangles": 324,
+          "parent": "fmfox_tires_1"
+        },
+        {
+          "name": "am5eunew1_raceparts_light-material_7",
+          "material": "am5eunew1_raceparts_light",
+          "bounds": {
+            "min": [
+              -0.9756,
+              1.1905,
+              -0.5133
+            ],
+            "max": [
+              -0.7649,
+              1.5933,
+              -0.1104
+            ],
+            "center": [
+              -0.8703,
+              1.3919,
+              -0.3119
+            ],
+            "size": [
+              0.2107,
+              0.4028,
+              0.4028
+            ]
+          },
+          "triangles": 733,
+          "parent": "fmfox_wheels_2"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_5",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              -0.9767,
+              1.3424,
+              -0.3602
+            ],
+            "max": [
+              -0.9557,
+              1.5691,
+              -0.263
+            ],
+            "center": [
+              -0.9662,
+              1.4558,
+              -0.3116
+            ],
+            "size": [
+              0.021,
+              0.2267,
+              0.0972
+            ]
+          },
+          "triangles": 121,
+          "parent": "fmfox_wheels_2"
+        },
+        {
+          "name": "am5eunew1_grey2-material_2",
+          "material": "am5eunew1_grey2",
+          "bounds": {
+            "min": [
+              -0.987,
+              1.1905,
+              -0.5139
+            ],
+            "max": [
+              -0.9496,
+              1.5933,
+              -0.1105
+            ],
+            "center": [
+              -0.9683,
+              1.3919,
+              -0.3122
+            ],
+            "size": [
+              0.0374,
+              0.4028,
+              0.4034
+            ]
+          },
+          "triangles": 1372,
+          "parent": "fmfox_wheels_2"
+        },
+        {
+          "name": "tire_01a-material_2",
+          "material": "tire_01a",
+          "bounds": {
+            "min": [
+              -0.9752,
+              1.1002,
+              -0.6036
+            ],
+            "max": [
+              -0.7735,
+              1.683,
+              -0.0208
+            ],
+            "center": [
+              -0.8744,
+              1.3916,
+              -0.3122
+            ],
+            "size": [
+              0.2017,
+              0.5828,
+              0.5828
+            ]
+          },
+          "triangles": 324,
+          "parent": "fmfox_tires_2"
+        },
+        {
+          "name": "am5eunew1_raceparts_light-material_8",
+          "material": "am5eunew1_raceparts_light",
+          "bounds": {
+            "min": [
+              0.7274,
+              1.1899,
+              -0.5133
+            ],
+            "max": [
+              0.9381,
+              1.5927,
+              -0.1104
+            ],
+            "center": [
+              0.8328,
+              1.3913,
+              -0.3119
+            ],
+            "size": [
+              0.2107,
+              0.4028,
+              0.4028
+            ]
+          },
+          "triangles": 733,
+          "parent": "fmfox_wheels_3"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_6",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              0.9182,
+              1.2141,
+              -0.3602
+            ],
+            "max": [
+              0.9392,
+              1.4408,
+              -0.263
+            ],
+            "center": [
+              0.9287,
+              1.3275,
+              -0.3116
+            ],
+            "size": [
+              0.021,
+              0.2267,
+              0.0972
+            ]
+          },
+          "triangles": 121,
+          "parent": "fmfox_wheels_3"
+        },
+        {
+          "name": "am5eunew1_grey2-material_3",
+          "material": "am5eunew1_grey2",
+          "bounds": {
+            "min": [
+              0.9121,
+              1.1899,
+              -0.5139
+            ],
+            "max": [
+              0.9495,
+              1.5927,
+              -0.1105
+            ],
+            "center": [
+              0.9308,
+              1.3913,
+              -0.3122
+            ],
+            "size": [
+              0.0374,
+              0.4028,
+              0.4034
+            ]
+          },
+          "triangles": 1372,
+          "parent": "fmfox_wheels_3"
+        },
+        {
+          "name": "tire_01a-material_3",
+          "material": "tire_01a",
+          "bounds": {
+            "min": [
+              0.736,
+              1.1002,
+              -0.6036
+            ],
+            "max": [
+              0.9377,
+              1.683,
+              -0.0208
+            ],
+            "center": [
+              0.8369,
+              1.3916,
+              -0.3122
+            ],
+            "size": [
+              0.2017,
+              0.5828,
+              0.5828
+            ]
+          },
+          "triangles": 324,
+          "parent": "fmfox_tires_3"
+        }
+      ],
+      "wheelGroups": [
+        {
+          "name": "ArtiSys_Wheel_01_Reused",
+          "bounds": {
+            "min": [
+              -0.987,
+              -1.1896,
+              -0.6036
+            ],
+            "max": [
+              -0.7649,
+              -0.6068,
+              -0.0208
+            ],
+            "center": [
+              -0.8759,
+              -0.8982,
+              -0.3122
+            ],
+            "size": [
+              0.2221,
+              0.5828,
+              0.5828
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 2
+        },
+        {
+          "name": "fmfox_wheels",
+          "bounds": {
+            "min": [
+              -0.987,
+              -1.0993,
+              -0.5139
+            ],
+            "max": [
+              -0.7649,
+              -0.6965,
+              -0.1104
+            ],
+            "center": [
+              -0.8759,
+              -0.8979,
+              -0.3122
+            ],
+            "size": [
+              0.2221,
+              0.4028,
+              0.4034
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 3
+        },
+        {
+          "name": "ArtiSys_Wheel_02_Reused",
+          "bounds": {
+            "min": [
+              0.7274,
+              -1.1896,
+              -0.6036
+            ],
+            "max": [
+              0.9495,
+              -0.6068,
+              -0.0208
+            ],
+            "center": [
+              0.8384,
+              -0.8982,
+              -0.3122
+            ],
+            "size": [
+              0.2221,
+              0.5828,
+              0.5828
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 2
+        },
+        {
+          "name": "fmfox_wheels_1",
+          "bounds": {
+            "min": [
+              0.7274,
+              -1.0999,
+              -0.5139
+            ],
+            "max": [
+              0.9495,
+              -0.6971,
+              -0.1104
+            ],
+            "center": [
+              0.8384,
+              -0.8985,
+              -0.3122
+            ],
+            "size": [
+              0.2221,
+              0.4028,
+              0.4034
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 3
+        },
+        {
+          "name": "ArtiSys_Wheel_03_Reused",
+          "bounds": {
+            "min": [
+              -0.987,
+              1.1002,
+              -0.6036
+            ],
+            "max": [
+              -0.7649,
+              1.683,
+              -0.0208
+            ],
+            "center": [
+              -0.8759,
+              1.3916,
+              -0.3122
+            ],
+            "size": [
+              0.2221,
+              0.5828,
+              0.5828
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 2
+        },
+        {
+          "name": "fmfox_wheels_2",
+          "bounds": {
+            "min": [
+              -0.987,
+              1.1905,
+              -0.5139
+            ],
+            "max": [
+              -0.7649,
+              1.5933,
+              -0.1104
+            ],
+            "center": [
+              -0.8759,
+              1.3919,
+              -0.3122
+            ],
+            "size": [
+              0.2221,
+              0.4028,
+              0.4034
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 3
+        },
+        {
+          "name": "ArtiSys_Wheel_04_Reused",
+          "bounds": {
+            "min": [
+              0.7274,
+              1.1002,
+              -0.6036
+            ],
+            "max": [
+              0.9495,
+              1.683,
+              -0.0208
+            ],
+            "center": [
+              0.8384,
+              1.3916,
+              -0.3122
+            ],
+            "size": [
+              0.2221,
+              0.5828,
+              0.5828
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 2
+        },
+        {
+          "name": "fmfox_wheels_3",
+          "bounds": {
+            "min": [
+              0.7274,
+              1.1899,
+              -0.5139
+            ],
+            "max": [
+              0.9495,
+              1.5927,
+              -0.1104
+            ],
+            "center": [
+              0.8384,
+              1.3913,
+              -0.3122
+            ],
+            "size": [
+              0.2221,
+              0.4028,
+              0.4034
+            ]
+          },
+          "type": "Object3D",
+          "childCount": 3
+        }
+      ],
+      "largestMeshes": [
+        {
+          "name": "am5eunew1-material_5",
+          "material": "am5eunew1",
+          "bounds": {
+            "min": [
+              -0.8218,
+              0.2813,
+              -1.5228
+            ],
+            "max": [
+              0.8219,
+              1.6011,
+              1.866
+            ],
+            "center": [
+              0,
+              0.9412,
+              0.1716
+            ],
+            "size": [
+              1.6437,
+              1.3198,
+              3.3889
+            ]
+          },
+          "triangles": 8603,
+          "parent": "fmfox_body"
+        },
+        {
+          "name": "am5eunew1_chrome-material_1",
+          "material": "am5eunew1_chrome",
+          "bounds": {
+            "min": [
+              -0.811,
+              0.709,
+              -1.5351
+            ],
+            "max": [
+              0.811,
+              1.0784,
+              2.0978
+            ],
+            "center": [
+              0,
+              0.8937,
+              0.2813
+            ],
+            "size": [
+              1.6219,
+              0.3694,
+              3.6329
+            ]
+          },
+          "triangles": 3583,
+          "parent": "fmfox_body"
+        },
+        {
+          "name": "am5eunew1_frontlights-material_1",
+          "material": "am5eunew1_frontlights",
+          "bounds": {
+            "min": [
+              -0.6777,
+              0.7045,
+              1.8396
+            ],
+            "max": [
+              0.6777,
+              0.8497,
+              2.0738
+            ],
+            "center": [
+              0,
+              0.7771,
+              1.9567
+            ],
+            "size": [
+              1.3554,
+              0.1453,
+              0.2341
+            ]
+          },
+          "triangles": 3373,
+          "parent": "fmfox_body"
+        },
+        {
+          "name": "am5eunew1_underbody-material_4",
+          "material": "am5eunew1_underbody",
+          "bounds": {
+            "min": [
+              -0.8267,
+              0.2306,
+              -1.5111
+            ],
+            "max": [
+              0.8254,
+              1.5621,
+              2.0967
+            ],
+            "center": [
+              -0.0007,
+              0.8963,
+              0.2928
+            ],
+            "size": [
+              1.6521,
+              1.3315,
+              3.6078
+            ]
+          },
+          "triangles": 2829,
+          "parent": "fmfox_body"
+        },
+        {
+          "name": "am5eunew1_raceparts_light-material_4",
+          "material": "am5eunew1_raceparts_light",
+          "bounds": {
+            "min": [
+              -0.8338,
+              0.2844,
+              -1.5456
+            ],
+            "max": [
+              0.8338,
+              1.9276,
+              1.4373
+            ],
+            "center": [
+              0,
+              1.106,
+              -0.0541
+            ],
+            "size": [
+              1.6676,
+              1.6432,
+              2.9829
+            ]
+          },
+          "triangles": 2768,
+          "parent": "fmfox_body"
+        },
+        {
+          "name": "am5eunew1_raceparts_light-material_3",
+          "material": "am5eunew1_raceparts_light",
+          "bounds": {
+            "min": [
+              -0.7775,
+              0.2727,
+              1.739
+            ],
+            "max": [
+              0.7775,
+              0.825,
+              2.2312
+            ],
+            "center": [
+              0,
+              0.5488,
+              1.9851
+            ],
+            "size": [
+              1.5549,
+              0.5522,
+              0.4922
+            ]
+          },
+          "triangles": 2729,
+          "parent": "fmfox_bumper_F"
+        },
+        {
+          "name": "am5eunew1_raceparts-material_2",
+          "material": "am5eunew1_raceparts",
+          "bounds": {
+            "min": [
+              -0.7431,
+              0.2889,
+              -1.489
+            ],
+            "max": [
+              0.7431,
+              1.5143,
+              1.3739
+            ],
+            "center": [
+              0,
+              0.9016,
+              -0.0575
+            ],
+            "size": [
+              1.4862,
+              1.2254,
+              2.8628
+            ]
+          },
+          "triangles": 2608,
+          "parent": "fmfox_body"
+        },
+        {
+          "name": "am5eunew1-material_4",
+          "material": "am5eunew1",
+          "bounds": {
+            "min": [
+              -0.7943,
+              0.4683,
+              1.6552
+            ],
+            "max": [
+              0.7943,
+              0.8195,
+              2.2247
+            ],
+            "center": [
+              0,
+              0.6439,
+              1.94
+            ],
+            "size": [
+              1.5887,
+              0.3512,
+              0.5694
+            ]
+          },
+          "triangles": 2561,
+          "parent": "fmfox_bumper_F"
+        },
+        {
+          "name": "am5eunew1_glass-material_6",
+          "material": "am5eunew1_glass",
+          "bounds": {
+            "min": [
+              -0.7933,
+              0.7144,
+              -1.4535
+            ],
+            "max": [
+              0.7935,
+              1.1279,
+              2.0939
+            ],
+            "center": [
+              0.0001,
+              0.9211,
+              0.3202
+            ],
+            "size": [
+              1.5868,
+              0.4136,
+              3.5474
+            ]
+          },
+          "triangles": 1665,
+          "parent": "fmfox_body"
+        },
+        {
+          "name": "am5eunew1-material_3",
+          "material": "am5eunew1",
+          "bounds": {
+            "min": [
+              -0.814,
+              0.4683,
+              -1.5851
+            ],
+            "max": [
+              0.814,
+              0.8044,
+              -1.0751
+            ],
+            "center": [
+              0,
+              0.6363,
+              -1.3301
+            ],
+            "size": [
+              1.628,
+              0.3361,
+              0.51
+            ]
+          },
+          "triangles": 1503,
+          "parent": "fmfox_bumper_R"
+        },
+        {
+          "name": "am5eunew1_grey2-material",
+          "material": "am5eunew1_grey2",
+          "bounds": {
+            "min": [
+              -0.987,
+              -1.0993,
+              -0.5139
+            ],
+            "max": [
+              -0.9496,
+              -0.6965,
+              -0.1105
+            ],
+            "center": [
+              -0.9683,
+              -0.8979,
+              -0.3122
+            ],
+            "size": [
+              0.0374,
+              0.4028,
+              0.4034
+            ]
+          },
+          "triangles": 1372,
+          "parent": "fmfox_wheels"
+        },
+        {
+          "name": "am5eunew1_grey2-material_1",
+          "material": "am5eunew1_grey2",
+          "bounds": {
+            "min": [
+              0.9121,
+              -1.0999,
+              -0.5139
+            ],
+            "max": [
+              0.9495,
+              -0.6971,
+              -0.1105
+            ],
+            "center": [
+              0.9308,
+              -0.8985,
+              -0.3122
+            ],
+            "size": [
+              0.0374,
+              0.4028,
+              0.4034
+            ]
+          },
+          "triangles": 1372,
+          "parent": "fmfox_wheels_1"
+        },
+        {
+          "name": "am5eunew1_grey2-material_2",
+          "material": "am5eunew1_grey2",
+          "bounds": {
+            "min": [
+              -0.987,
+              1.1905,
+              -0.5139
+            ],
+            "max": [
+              -0.9496,
+              1.5933,
+              -0.1105
+            ],
+            "center": [
+              -0.9683,
+              1.3919,
+              -0.3122
+            ],
+            "size": [
+              0.0374,
+              0.4028,
+              0.4034
+            ]
+          },
+          "triangles": 1372,
+          "parent": "fmfox_wheels_2"
+        },
+        {
+          "name": "am5eunew1_grey2-material_3",
+          "material": "am5eunew1_grey2",
+          "bounds": {
+            "min": [
+              0.9121,
+              1.1899,
+              -0.5139
+            ],
+            "max": [
+              0.9495,
+              1.5927,
+              -0.1105
+            ],
+            "center": [
+              0.9308,
+              1.3913,
+              -0.3122
+            ],
+            "size": [
+              0.0374,
+              0.4028,
+              0.4034
+            ]
+          },
+          "triangles": 1372,
+          "parent": "fmfox_wheels_3"
+        },
+        {
+          "name": "am5eunew1_rearlights_light-material_1",
+          "material": "am5eunew1_rearlights_light",
+          "bounds": {
+            "min": [
+              -0.7467,
+              0.8709,
+              -1.4505
+            ],
+            "max": [
+              0.7467,
+              1.1279,
+              -1.2436
+            ],
+            "center": [
+              0,
+              0.9994,
+              -1.347
+            ],
+            "size": [
+              1.4935,
+              0.2571,
+              0.2069
+            ]
+          },
+          "triangles": 1140,
+          "parent": "fmfox_body"
+        }
+      ],
+      "sceneRoot": "Sketchfab_Scene"
+    },
+    {
+      "id": "fiat-palio",
+      "dimensions": [
+        2.2906,
+        1.7984,
+        4.5205
+      ],
+      "box": {
+        "min": [
+          -1.0894,
+          -0.5892,
+          -2.1869
+        ],
+        "max": [
+          1.2013,
+          1.2093,
+          2.3336
+        ],
+        "center": [
+          0.056,
+          0.3101,
+          0.0733
+        ],
+        "size": [
+          2.2906,
+          1.7984,
+          4.5205
+        ]
+      },
+      "wheels": [
+        {
+          "name": "ArtiSys_5Spoke_Wheel_Approximate",
+          "material": "ArtiSys_Procedural_Tire_Rubber",
+          "bounds": {
+            "min": [
+              -1.0462,
+              -0.5827,
+              -1.5174
+            ],
+            "max": [
+              -0.8226,
+              0.0673,
+              -0.8674
+            ],
+            "center": [
+              -0.9344,
+              -0.2577,
+              -1.1924
+            ],
+            "size": [
+              0.2236,
+              0.65,
+              0.65
+            ]
+          },
+          "triangles": 400,
+          "parent": "ArtiSys_Wheel_01_Procedural"
+        },
+        {
+          "name": "ArtiSys_5Spoke_Wheel_Approximate_1",
+          "material": "ArtiSys_Procedural_Rim_Aluminium",
+          "bounds": {
+            "min": [
+              -1.0484,
+              -0.4787,
+              -1.4134
+            ],
+            "max": [
+              -0.8205,
+              -0.0367,
+              -0.9714
+            ],
+            "center": [
+              -0.9344,
+              -0.2577,
+              -1.1924
+            ],
+            "size": [
+              0.2279,
+              0.442,
+              0.442
+            ]
+          },
+          "triangles": 340,
+          "parent": "ArtiSys_Wheel_01_Procedural"
+        },
+        {
+          "name": "ArtiSys_5Spoke_Wheel_Approximate",
+          "material": "ArtiSys_Procedural_Tire_Rubber",
+          "bounds": {
+            "min": [
+              0.9345,
+              -0.5827,
+              -1.5174
+            ],
+            "max": [
+              1.1581,
+              0.0673,
+              -0.8674
+            ],
+            "center": [
+              1.0463,
+              -0.2577,
+              -1.1924
+            ],
+            "size": [
+              0.2236,
+              0.65,
+              0.65
+            ]
+          },
+          "triangles": 400,
+          "parent": "ArtiSys_Wheel_02_Procedural"
+        },
+        {
+          "name": "ArtiSys_5Spoke_Wheel_Approximate_1",
+          "material": "ArtiSys_Procedural_Rim_Aluminium",
+          "bounds": {
+            "min": [
+              0.9324,
+              -0.4787,
+              -1.4134
+            ],
+            "max": [
+              1.1603,
+              -0.0367,
+              -0.9714
+            ],
+            "center": [
+              1.0463,
+              -0.2577,
+              -1.1924
+            ],
+            "size": [
+              0.2279,
+              0.442,
+              0.442
+            ]
+          },
+          "triangles": 340,
+          "parent": "ArtiSys_Wheel_02_Procedural"
+        },
+        {
+          "name": "ArtiSys_5Spoke_Wheel_Approximate",
+          "material": "ArtiSys_Procedural_Tire_Rubber",
+          "bounds": {
+            "min": [
+              -1.0462,
+              -0.5827,
+              1.0141
+            ],
+            "max": [
+              -0.8226,
+              0.0673,
+              1.6641
+            ],
+            "center": [
+              -0.9344,
+              -0.2577,
+              1.3391
+            ],
+            "size": [
+              0.2236,
+              0.65,
+              0.65
+            ]
+          },
+          "triangles": 400,
+          "parent": "ArtiSys_Wheel_03_Procedural"
+        },
+        {
+          "name": "ArtiSys_5Spoke_Wheel_Approximate_1",
+          "material": "ArtiSys_Procedural_Rim_Aluminium",
+          "bounds": {
+            "min": [
+              -1.0484,
+              -0.4787,
+              1.1181
+            ],
+            "max": [
+              -0.8205,
+              -0.0367,
+              1.5601
+            ],
+            "center": [
+              -0.9344,
+              -0.2577,
+              1.3391
+            ],
+            "size": [
+              0.2279,
+              0.442,
+              0.442
+            ]
+          },
+          "triangles": 340,
+          "parent": "ArtiSys_Wheel_03_Procedural"
+        },
+        {
+          "name": "ArtiSys_5Spoke_Wheel_Approximate",
+          "material": "ArtiSys_Procedural_Tire_Rubber",
+          "bounds": {
+            "min": [
+              0.9345,
+              -0.5827,
+              1.0141
+            ],
+            "max": [
+              1.1581,
+              0.0673,
+              1.6641
+            ],
+            "center": [
+              1.0463,
+              -0.2577,
+              1.3391
+            ],
+            "size": [
+              0.2236,
+              0.65,
+              0.65
+            ]
+          },
+          "triangles": 400,
+          "parent": "ArtiSys_Wheel_04_Procedural"
+        },
+        {
+          "name": "ArtiSys_5Spoke_Wheel_Approximate_1",
+          "material": "ArtiSys_Procedural_Rim_Aluminium",
+          "bounds": {
+            "min": [
+              0.9324,
+              -0.4787,
+              1.1181
+            ],
+            "max": [
+              1.1603,
+              -0.0367,
+              1.5601
+            ],
+            "center": [
+              1.0463,
+              -0.2577,
+              1.3391
+            ],
+            "size": [
+              0.2279,
+              0.442,
+              0.442
+            ]
+          },
+          "triangles": 340,
+          "parent": "ArtiSys_Wheel_04_Procedural"
+        }
+      ],
+      "wheelGroups": [
+        {
+          "name": "ArtiSys_Wheel_01_Procedural",
+          "bounds": {
+            "min": [
+              -1.0484,
+              -0.5827,
+              -1.5174
+            ],
+            "max": [
+              -0.8205,
+              0.0673,
+              -0.8674
+            ],
+            "center": [
+              -0.9344,
+              -0.2577,
+              -1.1924
+            ],
+            "size": [
+              0.2279,
+              0.65,
+              0.65
+            ]
+          },
+          "type": "Group",
+          "childCount": 2
+        },
+        {
+          "name": "ArtiSys_Wheel_02_Procedural",
+          "bounds": {
+            "min": [
+              0.9324,
+              -0.5827,
+              -1.5174
+            ],
+            "max": [
+              1.1603,
+              0.0673,
+              -0.8674
+            ],
+            "center": [
+              1.0463,
+              -0.2577,
+              -1.1924
+            ],
+            "size": [
+              0.2279,
+              0.65,
+              0.65
+            ]
+          },
+          "type": "Group",
+          "childCount": 2
+        },
+        {
+          "name": "ArtiSys_Wheel_03_Procedural",
+          "bounds": {
+            "min": [
+              -1.0484,
+              -0.5827,
+              1.0141
+            ],
+            "max": [
+              -0.8205,
+              0.0673,
+              1.6641
+            ],
+            "center": [
+              -0.9344,
+              -0.2577,
+              1.3391
+            ],
+            "size": [
+              0.2279,
+              0.65,
+              0.65
+            ]
+          },
+          "type": "Group",
+          "childCount": 2
+        },
+        {
+          "name": "ArtiSys_Wheel_04_Procedural",
+          "bounds": {
+            "min": [
+              0.9324,
+              -0.5827,
+              1.0141
+            ],
+            "max": [
+              1.1603,
+              0.0673,
+              1.6641
+            ],
+            "center": [
+              1.0463,
+              -0.2577,
+              1.3391
+            ],
+            "size": [
+              0.2279,
+              0.65,
+              0.65
+            ]
+          },
+          "type": "Group",
+          "childCount": 2
+        }
+      ],
+      "largestMeshes": [
+        {
+          "name": "interior_g1m1_0",
+          "material": "g1m1",
+          "bounds": {
+            "min": [
+              -0.8276,
+              -0.4679,
+              -1.0215
+            ],
+            "max": [
+              0.9715,
+              0.9807,
+              2.1784
+            ],
+            "center": [
+              0.072,
+              0.2564,
+              0.5784
+            ],
+            "size": [
+              1.799,
+              1.4485,
+              3.1999
+            ]
+          },
+          "triangles": 6874,
+          "parent": "interior"
+        },
+        {
+          "name": "chassis_g0m3_0",
+          "material": "g0m3",
+          "bounds": {
+            "min": [
+              -0.9628,
+              -0.5491,
+              -2.0489
+            ],
+            "max": [
+              1.093,
+              0.9998,
+              2.2186
+            ],
+            "center": [
+              0.0651,
+              0.2253,
+              0.0849
+            ],
+            "size": [
+              2.0558,
+              1.5489,
+              4.2676
+            ]
+          },
+          "triangles": 2262,
+          "parent": "chassis"
+        },
+        {
+          "name": "chassis_g0m4_0",
+          "material": "g0m4",
+          "bounds": {
+            "min": [
+              -0.9598,
+              -0.5892,
+              -1.6499
+            ],
+            "max": [
+              1.0899,
+              1.2093,
+              2.1884
+            ],
+            "center": [
+              0.0651,
+              0.3101,
+              0.2692
+            ],
+            "size": [
+              2.0497,
+              1.7984,
+              3.8383
+            ]
+          },
+          "triangles": 1944,
+          "parent": "chassis"
+        },
+        {
+          "name": "door_rf_ok_g8m2_0",
+          "material": "g8m2",
+          "bounds": {
+            "min": [
+              0.7055,
+              -0.3355,
+              -0.6322
+            ],
+            "max": [
+              1.2013,
+              0.9132,
+              0.4962
+            ],
+            "center": [
+              0.9534,
+              0.2889,
+              -0.068
+            ],
+            "size": [
+              0.4958,
+              1.2487,
+              1.1284
+            ]
+          },
+          "triangles": 1270,
+          "parent": "door_rf_ok"
+        },
+        {
+          "name": "door_lf_ok_g6m2_0",
+          "material": "g6m2",
+          "bounds": {
+            "min": [
+              -1.0894,
+              -0.3521,
+              -0.632
+            ],
+            "max": [
+              -0.6035,
+              0.9001,
+              0.4964
+            ],
+            "center": [
+              -0.8465,
+              0.274,
+              -0.0678
+            ],
+            "size": [
+              0.4858,
+              1.2522,
+              1.1284
+            ]
+          },
+          "triangles": 1270,
+          "parent": "door_lf_ok"
+        },
+        {
+          "name": "chassis_g0m0_0",
+          "material": "g0m0",
+          "bounds": {
+            "min": [
+              -0.952,
+              -0.101,
+              -2.0697
+            ],
+            "max": [
+              1.0829,
+              0.4285,
+              2.1834
+            ],
+            "center": [
+              0.0655,
+              0.1637,
+              0.0569
+            ],
+            "size": [
+              2.0348,
+              0.5296,
+              4.2531
+            ]
+          },
+          "triangles": 1189,
+          "parent": "chassis"
+        },
+        {
+          "name": "chassis001_g4m0_0",
+          "material": "g4m0",
+          "bounds": {
+            "min": [
+              -0.9536,
+              -0.5829,
+              -2.1869
+            ],
+            "max": [
+              1.1032,
+              0.0534,
+              2.3336
+            ],
+            "center": [
+              0.0748,
+              -0.2647,
+              0.0733
+            ],
+            "size": [
+              2.0568,
+              0.6363,
+              4.5205
+            ]
+          },
+          "triangles": 719,
+          "parent": "chassis001"
+        },
+        {
+          "name": "door_lr_ok_g7m0_0",
+          "material": "g7m0",
+          "bounds": {
+            "min": [
+              -0.9455,
+              -0.3996,
+              0.4175
+            ],
+            "max": [
+              -0.577,
+              0.9529,
+              1.613
+            ],
+            "center": [
+              -0.7613,
+              0.2767,
+              1.0153
+            ],
+            "size": [
+              0.3686,
+              1.3525,
+              1.1955
+            ]
+          },
+          "triangles": 700,
+          "parent": "door_lr_ok"
+        },
+        {
+          "name": "door_rr_ok001_g11m0001_0",
+          "material": "g11m0.001",
+          "bounds": {
+            "min": [
+              0.6767,
+              -0.3811,
+              0.4173
+            ],
+            "max": [
+              1.0659,
+              0.9651,
+              1.6127
+            ],
+            "center": [
+              0.8713,
+              0.292,
+              1.015
+            ],
+            "size": [
+              0.3892,
+              1.3462,
+              1.1955
+            ]
+          },
+          "triangles": 689,
+          "parent": "door_rr_ok001"
+        },
+        {
+          "name": "boot_ok_g10m2_0",
+          "material": "g10m2",
+          "bounds": {
+            "min": [
+              -0.7821,
+              0.3284,
+              1.5609
+            ],
+            "max": [
+              0.9056,
+              0.9461,
+              2.3151
+            ],
+            "center": [
+              0.0617,
+              0.6372,
+              1.938
+            ],
+            "size": [
+              1.6876,
+              0.6177,
+              0.7543
+            ]
+          },
+          "triangles": 669,
+          "parent": "boot_ok"
+        },
+        {
+          "name": "door_rf_ok_g8m1_0",
+          "material": "g8m1",
+          "bounds": {
+            "min": [
+              0.6768,
+              -0.3909,
+              -0.7001
+            ],
+            "max": [
+              1.0662,
+              0.9606,
+              0.5846
+            ],
+            "center": [
+              0.8715,
+              0.2849,
+              -0.0578
+            ],
+            "size": [
+              0.3894,
+              1.3515,
+              1.2847
+            ]
+          },
+          "triangles": 632,
+          "parent": "door_rf_ok"
+        },
+        {
+          "name": "door_lf_ok_g6m1_0",
+          "material": "g6m1",
+          "bounds": {
+            "min": [
+              -0.9436,
+              -0.4097,
+              -0.7
+            ],
+            "max": [
+              -0.5759,
+              0.9481,
+              0.5848
+            ],
+            "center": [
+              -0.7598,
+              0.2692,
+              -0.0576
+            ],
+            "size": [
+              0.3677,
+              1.3578,
+              1.2847
+            ]
+          },
+          "triangles": 632,
+          "parent": "door_lf_ok"
+        },
+        {
+          "name": "door_lr_ok_g7m1_0",
+          "material": "g7m1",
+          "bounds": {
+            "min": [
+              -0.9494,
+              -0.3246,
+              0.5453
+            ],
+            "max": [
+              -0.6137,
+              0.9013,
+              1.5016
+            ],
+            "center": [
+              -0.7816,
+              0.2883,
+              1.0234
+            ],
+            "size": [
+              0.3357,
+              1.2258,
+              0.9563
+            ]
+          },
+          "triangles": 625,
+          "parent": "door_lr_ok"
+        },
+        {
+          "name": "door_rr_ok001_g11m1001_0",
+          "material": "g11m1.001",
+          "bounds": {
+            "min": [
+              0.7145,
+              -0.308,
+              0.545
+            ],
+            "max": [
+              1.0624,
+              0.9142,
+              1.5013
+            ],
+            "center": [
+              0.8884,
+              0.3031,
+              1.0232
+            ],
+            "size": [
+              0.348,
+              1.2222,
+              0.9563
+            ]
+          },
+          "triangles": 618,
+          "parent": "door_rr_ok001"
+        },
+        {
+          "name": "boot_ok_g10m0_0",
+          "material": "g10m0",
+          "bounds": {
+            "min": [
+              -0.5534,
+              0.1296,
+              2.2084
+            ],
+            "max": [
+              0.6951,
+              0.3774,
+              2.2729
+            ],
+            "center": [
+              0.0709,
+              0.2535,
+              2.2407
+            ],
+            "size": [
+              1.2485,
+              0.2478,
+              0.0645
+            ]
+          },
+          "triangles": 605,
+          "parent": "boot_ok"
+        }
+      ],
+      "sceneRoot": "Sketchfab_Scene"
+    }
+  ]
+}
