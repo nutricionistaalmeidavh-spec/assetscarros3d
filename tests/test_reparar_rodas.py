@@ -52,6 +52,8 @@ class TestRepararRodas(unittest.TestCase):
                 "ARTISYS_NEW_WHEEL_RL","ARTISYS_NEW_WHEEL_RR"
             })
             self.assertTrue(all(x["radius"]>0.17 for x in wheels))
+            # O diâmetro não pode ultrapassar ~34% da altura do carro.
+            self.assertTrue(all(x["radius"]<=.17*1.5+.001 for x in wheels))
             self.assertEqual(report["geometry_status"],"RODAS_PROCEDURAIS_EXPERIMENTAIS")
 
     def test_too_small_or_flat_geometry_refused(self):
