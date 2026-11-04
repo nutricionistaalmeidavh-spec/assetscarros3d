@@ -1,0 +1,85 @@
+name: Miniaturas reais 3D — frota brasileira (curadoria)
+
+on:
+  push:
+    branches: [feat/curadoria-tecnica-532-modelos-20261103]
+    paths:
+      - .github/workflows/miniaturas-3d.yml
+      - curadoria/prioridades-frota-2026.json
+      - scripts/curadoria/thumbnail-plan.mjs
+      - scripts/curadoria/render_thumbnails.mjs
+      - scripts/curadoria/build_contact_sheet.py
+      - tests/thumbnail-plan.test.mjs
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: miniaturas-frota-primeiro-lote
+  cancel-in-progress: false
+
+jobs:
+  thumbnails:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout biblioteca de GLBs
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+          cache: npm
+      - name: Instalar dependências open source do render
+        run: |
+          npm ci --ignore-scripts
+          npm install --no-save --package-lock=false --ignore-scripts playwright@1.62.1
+          npx playwright install --with-deps chromium
+      - name: Testes RED/GREEN da priorização
+        run: node --test tests/thumbnail-plan.test.mjs
+      - name: Gerar primeiras 12 miniaturas reais (duas vistas)
+        env:
+          THUMBNAIL_LIMIT: '12'
+        run: node scripts/curadoria/render_thumbnails.mjs
+      - name: Mosaico de modelos priorizados
+        run: |
+          python3 -m pip install --user pillow
+          python3 scripts/curadoria/build_contact_sheet.py
+      - name: Validar miniaturas sem autoaprovação
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          folder=Path("curadoria/miniaturas")
+          data=json.loads((folder/"index.json").read_text())
+          assert data["selected"]==12 and data["generated"]==12 and data["failed"]==0
+          assert all(x["review_status"]=="PENDENTE_REVISAO_VISUAL" for x in data["models"])
+          assert all(x["status"]=="GERADO_PENDENTE_REVISAO" for x in data["models"])
+          for m in data["models"]:
+              assert len(m["views"])==2
+              for view in m["views"]:
+                  assert Path(view["file"]).is_file() and Path(view["file"]).stat().st_size>4000
+                  assert view["stats"]["triangles"]>0
+          assert (folder/"MOSAICO_PRIMEIROS_MODELOS.jpg").is_file()
+          print("12 modelos, 24 imagens GLB reais. Todos pendentes de aprovação visual.")
+          PY
+      - name: Commitar miniaturas somente na branch de curadoria
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add curadoria/miniaturas/
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: miniaturas reais dos 12 veículos prioritários para revisão"
+            git push origin HEAD:feat/curadoria-tecnica-532-modelos-20261103
+          fi
+      - name: Disponibilizar imagens para inspeção
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: miniaturas-3d-primeiro-lote
+          path: curadoria/miniaturas/
+          if-no-files-found: warn
+          retention-days: 14
